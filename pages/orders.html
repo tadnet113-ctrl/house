@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Commandes - Le Paname Service</title>
+    
+    <!-- ============================================================ -->
+    <!-- === BIBLIOTHÈQUES CORRIGÉES === -->
+    <!-- ============================================================ -->
+    
+    <!-- 1. FONT AWESOME 6 (version stable) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- 2. GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8f9fa;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .page-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .page-header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            color: #D4AF37;
+        }
+        .page-header h1 i {
+            margin-right: 0.5rem;
+        }
+        .page-header p {
+            color: #6c757d;
+            margin-top: 0.5rem;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .stat-card {
+            background: white;
+            border-radius: 0.75rem;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border: 1px solid #e9ecef;
+            transition: transform 0.2s;
+        }
+        .stat-card:hover {
+            transform: translateY(-3px);
+        }
+        .stat-card .number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #D4AF37;
+        }
+        .stat-card .label {
+            font-size: 0.75rem;
+            color: #6c757d;
+            margin-top: 0.25rem;
+        }
+        .orders-container {
+            background: white;
+            border-radius: 0.75rem;
+            border: 1px solid #e9ecef;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .order-card {
+            border-bottom: 1px solid #e9ecef;
+            padding: 1rem 1.25rem;
+            transition: all 0.3s;
+        }
+        .order-card:hover {
+            background: #f8f9fa;
+        }
+        .order-card:last-child {
+            border-bottom: none;
+        }
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .order-id {
+            font-weight: 700;
+            font-size: 0.875rem;
+            color: #D4AF37;
+        }
+        .order-date {
+            font-size: 0.75rem;
+            color: #6c757d;
+            margin-left: 0.5rem;
+        }
+        .order-status {
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        .status-pending { background: #fff3cd; color: #856404; }
+        .status-confirmed { background: #cfe2ff; color: #084298; }
+        .status-shipped { background: #cfe2ff; color: #084298; }
+        .status-delivered { background: #d1e7dd; color: #0f5132; }
+        .status-cancelled { background: #f8d7da; color: #721c24; }
+        .order-items {
+            margin-bottom: 0.75rem;
+            padding-left: 0.5rem;
+            border-left: 2px solid #D4AF37;
+        }
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #495057;
+            margin-bottom: 0.25rem;
+        }
+        .order-item-more {
+            font-size: 0.7rem;
+            color: #6c757d;
+            margin-top: 0.25rem;
+        }
+        .order-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid #e9ecef;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .order-total {
+            font-weight: 700;
+            color: #D4AF37;
+            font-size: 0.95rem;
+        }
+        .order-payment {
+            font-size: 0.7rem;
+            color: #6c757d;
+        }
+        .order-actions {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .btn-sm {
+            padding: 0.3rem 0.8rem;
+            border-radius: 2rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .btn-sm:hover {
+            transform: translateY(-2px);
+        }
+        .btn-sm.btn-whatsapp {
+            background: #25D366;
+            color: white;
+        }
+        .btn-sm.btn-whatsapp:hover {
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+        }
+        .btn-sm.btn-details {
+            background: #D4AF37;
+            color: #1a1a1a;
+        }
+        .btn-sm.btn-details:hover {
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+        }
+        .btn-sm.btn-cancel {
+            background: #dc3545;
+            color: white;
+        }
+        .btn-sm.btn-cancel:hover {
+            box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+        }
+        .btn-sm.btn-track {
+            background: #17a2b8;
+            color: white;
+        }
+        .btn-sm.btn-track:hover {
+            box-shadow: 0 4px 12px rgba(23, 162, 184, 0.3);
+        }
+        .btn-back {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.75rem 1.5rem;
+            background: #D4AF37;
+            color: #1a1a1a;
+            text-decoration: none;
+            border-radius: 2rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-back:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(212,175,55,0.3);
+        }
+        .empty-state {
+            padding: 3rem;
+            text-align: center;
+            color: #6c757d;
+        }
+        .empty-state i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.3;
+            display: block;
+        }
+        
+        /* Notification */
+        .notification-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1100;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .notification {
+            background: white;
+            padding: 0.8rem 1.2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+            border-left: 4px solid;
+            transform: translateX(400px);
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            min-width: 280px;
+            max-width: 400px;
+        }
+        .notification.show {
+            transform: translateX(0);
+        }
+        .notification-success {
+            border-left-color: #28a745;
+        }
+        .notification-success i {
+            color: #28a745;
+        }
+        .notification-error {
+            border-left-color: #dc3545;
+        }
+        .notification-error i {
+            color: #dc3545;
+        }
+        .notification-info {
+            border-left-color: #17a2b8;
+        }
+        .notification-info i {
+            color: #17a2b8;
+        }
+        .notification button {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-left: auto;
+            color: #6c757d;
+        }
+        .notification button:hover {
+            color: #1a1a1a;
+        }
+        
+        @media (max-width: 768px) {
+            .container { padding: 1rem; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .order-header { flex-direction: column; align-items: flex-start; }
+            .order-footer { flex-direction: column; align-items: flex-start; }
+            .order-actions { width: 100%; justify-content: flex-start; }
+        }
+        @media (max-width: 480px) {
+            .stats-grid { grid-template-columns: 1fr; }
+            .order-item { flex-direction: column; align-items: flex-start; gap: 0.2rem; }
+            .order-card { padding: 0.75rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="page-header">
+            <h1><i class="fas fa-shopping-bag"></i> Mes Commandes</h1>
+            <p>Consultez l'historique de toutes vos commandes</p>
+        </div>
+        
+        <div class="stats-grid" id="statsGrid">
+            <div class="stat-card"><div class="number" id="totalOrders">0</div><div class="label">Commandes</div></div>
+            <div class="stat-card"><div class="number" id="totalAmount">0 Fcfa</div><div class="label">Montant total</div></div>
+            <div class="stat-card"><div class="number" id="pendingOrders">0</div><div class="label">En attente</div></div>
+            <div class="stat-card"><div class="number" id="deliveredOrders">0</div><div class="label">Livrées</div></div>
+        </div>
+        
+        <div class="orders-container" id="ordersContainer"></div>
+        
+        <div style="text-align: center;">
+            <button class="btn-back" onclick="window.location.href='index.html'">
+                <i class="fas fa-home"></i> Retour à l'accueil
+            </button>
+        </div>
+    </div>
+    
+    <!-- Notifications -->
+    <div class="notification-container" id="notificationContainer"></div>
+
+    <!-- ============================================================ -->
+    <!-- === SCRIPT PRINCIPAL AVEC GESTIONNAIRE INTÉGRÉ === -->
+    <!-- ============================================================ -->
+    <script>
+        // ====================================================
+        // ORDERS MANAGER - Gestionnaire de commandes intégré
+        // ====================================================
+        const OrdersManager = (function() {
+            'use strict';
+
+            // === CONFIGURATION ===
+            const CONFIG = {
+                storageKey: 'paname_orders',
+                whatsappNumber: '237657715482',
+                statusLabels: {
+                    pending: 'En attente',
+                    confirmed: 'Confirmée',
+                    shipped: 'Expédiée',
+                    delivered: 'Livrée',
+                    cancelled: 'Annulée'
+                },
+                statusClasses: {
+                    pending: 'status-pending',
+                    confirmed: 'status-confirmed',
+                    shipped: 'status-shipped',
+                    delivered: 'status-delivered',
+                    cancelled: 'status-cancelled'
+                },
+                statusOrder: ['pending', 'confirmed', 'shipped', 'delivered', 'cancelled']
+            };
+
+            // === DONNÉES PAR DÉFAUT ===
+            const DEFAULT_ORDERS = [
+                {
+                    id: 'ORD-001',
+                    date: '2026-01-15',
+                    items: [
+                        { name: 'Ordinateur Portable Ultrabook', quantity: 1, price: 450000 },
+                        { name: 'Souris Gamer RGB', quantity: 1, price: 25000 }
+                    ],
+                    total: 475000,
+                    status: 'delivered',
+                    paymentMethod: 'Orange Money',
+                    shippingAddress: 'Yaoundé, Cameroun'
+                },
+                {
+                    id: 'ORD-002',
+                    date: '2026-01-20',
+                    items: [
+                        { name: 'Tensiomètre Électronique', quantity: 2, price: 35000 },
+                        { name: 'Montre de Luxe Homme', quantity: 1, price: 250000 }
+                    ],
+                    total: 320000,
+                    status: 'shipped',
+                    paymentMethod: 'MTN Mobile Money',
+                    shippingAddress: 'Douala, Cameroun'
+                },
+                {
+                    id: 'ORD-003',
+                    date: '2026-01-25',
+                    items: [
+                        { name: 'Panier de Légumes Bio', quantity: 3, price: 8500 },
+                        { name: 'Miel Bio de Montagne', quantity: 2, price: 6500 }
+                    ],
+                    total: 38500,
+                    status: 'pending',
+                    paymentMethod: 'PayPal',
+                    shippingAddress: 'Yaoundé, Cameroun'
+                },
+                {
+                    id: 'ORD-004',
+                    date: '2026-01-28',
+                    items: [
+                        { name: 'Écran 4K 27 pouces', quantity: 1, price: 250000 },
+                        { name: 'Clavier Mécanique RGB', quantity: 1, price: 55000 }
+                    ],
+                    total: 305000,
+                    status: 'confirmed',
+                    paymentMethod: 'Orange Money',
+                    shippingAddress: 'Bafoussam, Cameroun'
+                },
+                {
+                    id: 'ORD-005',
+                    date: '2026-02-01',
+                    items: [
+                        { name: 'Bracelet en Or 18k', quantity: 1, price: 185000 }
+                    ],
+                    total: 185000,
+                    status: 'cancelled',
+                    paymentMethod: 'MTN Mobile Money',
+                    shippingAddress: 'Yaoundé, Cameroun'
+                }
+            ];
+
+            // === ÉTAT ===
+            let orders = [];
+            let currentOrderId = null;
+
+            // === PRIVÉ ===
+
+            // Chargement des commandes depuis localStorage
+            function loadOrders() {
+                try {
+                    const stored = localStorage.getItem(CONFIG.storageKey);
+                    if (stored) {
+                        const parsed = JSON.parse(stored);
+                        if (Array.isArray(parsed) && parsed.length > 0) {
+                            orders = parsed;
+                            return orders;
+                        }
+                    }
+                    orders = JSON.parse(JSON.stringify(DEFAULT_ORDERS));
+                    saveOrders();
+                } catch (e) {
+                    orders = JSON.parse(JSON.stringify(DEFAULT_ORDERS));
+                    saveOrders();
+                }
+                return orders;
+            }
+
+            // Sauvegarde des commandes
+            function saveOrders() {
+                try {
+                    localStorage.setItem(CONFIG.storageKey, JSON.stringify(orders));
+                } catch (e) {
+                    console.warn('Impossible de sauvegarder les commandes:', e);
+                }
+            }
+
+            // Génération d'un ID unique
+            function generateOrderId() {
+                const count = orders.length + 1;
+                return `ORD-${String(count).padStart(3, '0')}`;
+            }
+
+            // === PUBLIQUE ===
+
+            // Obtenir toutes les commandes
+            function getAllOrders() {
+                return loadOrders();
+            }
+
+            // Obtenir une commande par son ID
+            function getOrderById(id) {
+                return orders.find(o => o.id === id) || null;
+            }
+
+            // Créer une nouvelle commande
+            function createOrder(orderData) {
+                const newOrder = {
+                    id: generateOrderId(),
+                    date: new Date().toISOString().split('T')[0],
+                    items: orderData.items || [],
+                    total: orderData.total || 0,
+                    status: 'pending',
+                    paymentMethod: orderData.paymentMethod || 'En attente',
+                    shippingAddress: orderData.shippingAddress || 'À définir'
+                };
+                orders.unshift(newOrder);
+                saveOrders();
+                return newOrder;
+            }
+
+            // Mettre à jour une commande
+            function updateOrder(id, updates) {
+                const index = orders.findIndex(o => o.id === id);
+                if (index === -1) return null;
+                orders[index] = { ...orders[index], ...updates };
+                saveOrders();
+                return orders[index];
+            }
+
+            // Supprimer une commande
+            function deleteOrder(id) {
+                const index = orders.findIndex(o => o.id === id);
+                if (index === -1) return false;
+                orders.splice(index, 1);
+                saveOrders();
+                return true;
+            }
+
+            // Changer le statut d'une commande
+            function updateOrderStatus(id, newStatus) {
+                const validStatuses = ['pending', 'confirmed', 'shipped', 'delivered', 'cancelled'];
+                if (!validStatuses.includes(newStatus)) {
+                    throw new Error(`Statut invalide: ${newStatus}`);
+                }
+                return updateOrder(id, { status: newStatus });
+            }
+
+            // Annuler une commande
+            function cancelOrder(id) {
+                const order = getOrderById(id);
+                if (!order) return null;
+                if (order.status === 'cancelled') {
+                    throw new Error('Cette commande est déjà annulée');
+                }
+                if (order.status === 'delivered') {
+                    throw new Error('Les commandes livrées ne peuvent pas être annulées');
+                }
+                return updateOrder(id, { status: 'cancelled' });
+            }
+
+            // Passer au statut suivant
+            function nextStatus(id) {
+                const order = getOrderById(id);
+                if (!order) return null;
+                const currentIndex = CONFIG.statusOrder.indexOf(order.status);
+                if (currentIndex === -1 || currentIndex === CONFIG.statusOrder.length - 1) {
+                    return order;
+                }
+                const next = CONFIG.statusOrder[currentIndex + 1];
+                return updateOrder(id, { status: next });
+            }
+
+            // Obtenir les statistiques des commandes
+            function getOrderStats() {
+                const all = getAllOrders();
+                const totalOrders = all.length;
+                const totalAmount = all.reduce((sum, o) => sum + o.total, 0);
+                const pendingOrders = all.filter(o => o.status === 'pending').length;
+                const completedOrders = all.filter(o => o.status === 'delivered').length;
+                return { totalOrders, totalAmount, pendingOrders, completedOrders };
+            }
+
+            // Formater le prix
+            function formatPrice(price) {
+                return price.toLocaleString() + ' Fcfa';
+            }
+
+            // Formater la date
+            function formatDate(dateStr) {
+                return new Date(dateStr).toLocaleDateString('fr-FR', {
+                    day: '2-digit',
+                    month: '2-digit',
+                    year: 'numeric'
+                });
+            }
+
+            // Obtenir le libellé du statut
+            function getStatusLabel(status) {
+                return CONFIG.statusLabels[status] || status;
+            }
+
+            // Obtenir la classe CSS du statut
+            function getStatusClass(status) {
+                return CONFIG.statusClasses[status] || 'status-pending';
+            }
+
+            // Générer le HTML d'une commande
+            function renderOrder(order) {
+                const statusClass = getStatusClass(order.status);
+                const statusLabel = getStatusLabel(order.status);
+                
+                // Items
+                let itemsHtml = '';
+                const maxItems = 3;
+                const displayItems = order.items.slice(0, maxItems);
+                const remaining = order.items.length - maxItems;
+                
+                displayItems.forEach(item => {
+                    itemsHtml += `
+                        <div class="order-item">
+                            <span>${item.name} × ${item.quantity}</span>
+                            <span>${formatPrice(item.price * item.quantity)}</span>
+                        </div>
+                    `;
+                });
+                
+                if (remaining > 0) {
+                    itemsHtml += `
+                        <div class="order-item-more">+ ${remaining} autre(s) article(s)</div>
+                    `;
+                }
+
+                // Boutons d'action
+                let actionButtons = '';
+                if (order.status !== 'cancelled' && order.status !== 'delivered') {
+                    actionButtons += `
+                        <button class="btn-sm btn-cancel" onclick="window.cancelOrder('${order.id}')">
+                            <i class="fas fa-times"></i> Annuler
+                        </button>
+                    `;
+                }
+                if (order.status === 'pending' || order.status === 'confirmed') {
+                    actionButtons += `
+                        <button class="btn-sm btn-whatsapp" onclick="window.contactWhatsApp('${order.id}')">
+                            <i class="fab fa-whatsapp"></i> Suivre
+                        </button>
+                    `;
+                }
+                actionButtons += `
+                    <button class="btn-sm btn-details" onclick="window.viewOrderDetails('${order.id}')">
+                        <i class="fas fa-eye"></i> Détails
+                    </button>
+                `;
+
+                return `
+                    <div class="order-card" id="order-${order.id}">
+                        <div class="order-header">
+                            <div>
+                                <span class="order-id">${order.id}</span>
+                                <span class="order-date"><i class="fas fa-calendar-alt"></i> ${formatDate(order.date)}</span>
+                            </div>
+                            <span class="order-status ${statusClass}">${statusLabel}</span>
+                        </div>
+                        <div class="order-items">
+                            ${itemsHtml}
+                        </div>
+                        <div class="order-footer">
+                            <div>
+                                <span class="order-total">Total : ${formatPrice(order.total)}</span>
+                                <span class="order-payment"><i class="fas fa-credit-card"></i> ${order.paymentMethod}</span>
+                            </div>
+                            <div class="order-actions">
+                                ${actionButtons}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Afficher toutes les commandes
+            function displayOrders(containerId) {
+                const container = document.getElementById(containerId);
+                if (!container) {
+                    console.warn(`Container #${containerId} non trouvé`);
+                    return;
+                }
+
+                const allOrders = getAllOrders();
+                
+                if (allOrders.length === 0) {
+                    container.innerHTML = `
+                        <div class="empty-state">
+                            <i class="fas fa-shopping-bag"></i>
+                            <h3>Aucune commande</h3>
+                            <p>Vous n'avez pas encore passé de commande.</p>
+                            <br>
+                            <a href="index.html" class="btn-back" style="margin-top:0;">Découvrir nos produits</a>
+                        </div>
+                    `;
+                    return;
+                }
+
+                container.innerHTML = allOrders.map(order => renderOrder(order)).join('');
+            }
+
+            // === EXPOSITION ===
+            return {
+                getAllOrders,
+                getOrderById,
+                createOrder,
+                updateOrder,
+                deleteOrder,
+                updateOrderStatus,
+                cancelOrder,
+                nextStatus,
+                getOrderStats,
+                formatPrice,
+                formatDate,
+                getStatusLabel,
+                getStatusClass,
+                renderOrder,
+                displayOrders,
+                CONFIG
+            };
+
+        })();
+
+        // ====================================================
+        // NOTIFICATION
+        // ====================================================
+        function showNotification(message, type = 'info') {
+            const container = document.getElementById('notificationContainer');
+            if (!container) return;
+
+            const icons = {
+                success: 'fa-check-circle',
+                error: 'fa-exclamation-circle',
+                info: 'fa-info-circle',
+                warning: 'fa-exclamation-triangle'
+            };
+
+            const notif = document.createElement('div');
+            notif.className = `notification notification-${type}`;
+            notif.innerHTML = `
+                <i class="fas ${icons[type] || icons.info}"></i>
+                <span>${message}</span>
+                <button onclick="this.parentElement.remove()">×</button>
+            `;
+            container.appendChild(notif);
+            setTimeout(() => notif.classList.add('show'), 10);
+            setTimeout(() => {
+                notif.classList.remove('show');
+                setTimeout(() => notif.remove(), 300);
+            }, 4000);
+        }
+
+        // ====================================================
+        // FONCTIONS GLOBALES (exposées dans window)
+        // ====================================================
+        
+        // Vue des détails d'une commande
+        window.viewOrderDetails = function(orderId) {
+            const order = OrdersManager.getOrderById(orderId);
+            if (!order) {
+                showNotification('Commande non trouvée', 'error');
+                return;
+            }
+
+            let itemsList = order.items.map(item => 
+                `• ${item.name} × ${item.quantity} : ${OrdersManager.formatPrice(item.price * item.quantity)}`
+            ).join('\n');
+
+            const message = 
+                `📋 DÉTAILS DE LA COMMANDE\n` +
+                `═══════════════════════════\n\n` +
+                `🆔 N° commande : ${order.id}\n` +
+                `📅 Date : ${OrdersManager.formatDate(order.date)}\n` +
+                `📦 Statut : ${OrdersManager.getStatusLabel(order.status)}\n` +
+                `💳 Paiement : ${order.paymentMethod}\n` +
+                `📍 Livraison : ${order.shippingAddress}\n\n` +
+                `🛒 ARTICLES :\n${itemsList}\n\n` +
+                `💰 TOTAL : ${OrdersManager.formatPrice(order.total)}\n` +
+                `═══════════════════════════\n` +
+                `Merci de votre confiance ! 🙏`;
+
+            alert(message);
+        };
+
+        // Confirmation d'annulation
+        window.cancelOrder = function(orderId) {
+            const order = OrdersManager.getOrderById(orderId);
+            if (!order) {
+                showNotification('Commande non trouvée', 'error');
+                return;
+            }
+
+            if (order.status === 'delivered') {
+                showNotification('Impossible d\'annuler une commande livrée', 'error');
+                return;
+            }
+
+            if (order.status === 'cancelled') {
+                showNotification('Cette commande est déjà annulée', 'warning');
+                return;
+            }
+
+            if (confirm(`❓ Voulez-vous vraiment annuler la commande ${orderId} ?`)) {
+                try {
+                    OrdersManager.cancelOrder(orderId);
+                    // Recharger l'affichage
+                    OrdersManager.displayOrders('ordersContainer');
+                    updateStatsDisplay();
+                    showNotification(`✅ Commande ${orderId} annulée avec succès`, 'success');
+                } catch (e) {
+                    showNotification(e.message, 'error');
+                }
+            }
+        };
+
+        // Contact WhatsApp
+        window.contactWhatsApp = function(orderId) {
+            const order = OrdersManager.getOrderById(orderId);
+            if (!order) {
+                showNotification('Commande non trouvée', 'error');
+                return;
+            }
+
+            const itemsList = order.items.map(item => 
+                `- ${item.name} (×${item.quantity})`
+            ).join('%0A');
+
+            const message = 
+                `Bonjour Le Paname Service ! 👋%0A%0A` +
+                `Je souhaite suivre ma commande :%0A` +
+                `📦 N° ${orderId} du ${OrdersManager.formatDate(order.date)}%0A` +
+                `📊 Statut actuel : ${OrdersManager.getStatusLabel(order.status)}%0A` +
+                `💰 Montant : ${OrdersManager.formatPrice(order.total)}%0A%0A` +
+                `📋 Détails des articles :%0A${itemsList}%0A%0A` +
+                `Pouvez-vous me donner plus d'informations sur la livraison ?%0A` +
+                `Merci d'avance ! 🙏`;
+
+            const url = `https://wa.me/${OrdersManager.CONFIG.whatsappNumber}?text=${message}`;
+            window.open(url, '_blank');
+        };
+
+        // ====================================================
+        // AFFICHAGE DES STATISTIQUES
+        // ====================================================
+        function updateStatsDisplay() {
+            const stats = OrdersManager.getOrderStats();
+            document.getElementById('totalOrders').textContent = stats.totalOrders;
+            document.getElementById('totalAmount').textContent = OrdersManager.formatPrice(stats.totalAmount);
+            document.getElementById('pendingOrders').textContent = stats.pendingOrders;
+            document.getElementById('deliveredOrders').textContent = stats.completedOrders;
+        }
+
+        // ====================================================
+        // INITIALISATION
+        // ====================================================
+        document.addEventListener('DOMContentLoaded', function() {
+            // Afficher les commandes
+            OrdersManager.displayOrders('ordersContainer');
+            
+            // Mettre à jour les statistiques
+            updateStatsDisplay();
+
+            console.log('📋 Page Mes Commandes - Chargée');
+            const stats = OrdersManager.getOrderStats();
+            console.log(`📦 ${stats.totalOrders} commandes trouvées`);
+            console.log(`💰 Total: ${OrdersManager.formatPrice(stats.totalAmount)}`);
+        });
+
+        // === EXPOSITION GLOBALE ===
+        window.OrdersManager = OrdersManager;
+        window.showNotification = showNotification;
+        window.updateStatsDisplay = updateStatsDisplay;
+
+        console.log('✅ Gestionnaire de commandes chargé avec succès');
+        console.log('💡 Commandes disponibles:');
+        OrdersManager.getAllOrders().forEach(o => {
+            console.log(`   - ${o.id}: ${o.status} (${OrdersManager.formatPrice(o.total)})`);
+        });
+    </script>
+</body>
+</html>

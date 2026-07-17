@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="description" content="Mon profil - Le Paname Service. Gérez vos informations personnelles, commandes et préférences.">
+    <meta name="author" content="Le Paname Service">
+    <meta name="theme-color" content="#D4AF37">
+    
+    <title>Mon profil - Le Paname Service</title>
+
+    <!-- ============================================================ -->
+    <!-- === BIBLIOTHÈQUES CORRIGÉES === -->
+    <!-- ============================================================ -->
+    
+    <!-- 1. FONT AWESOME 6 (version stable) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- 2. GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary-black: #0a0a0a;
+            --gold: #D4AF37;
+            --gold-dark: #B8960C;
+            --gold-gradient: linear-gradient(135deg, #D4AF37 0%, #F4D03F 50%, #D4AF37 100%);
+            --white: #ffffff;
+            --white-off: #f8f9fa;
+            --gray-light: #e9ecef;
+            --gray-medium: #6c757d;
+            --text-dark: #212529;
+            --text-gray: #495057;
+            --success: #28a745;
+            --danger: #dc3545;
+            --warning: #ffc107;
+            --shadow: 0 4px 6px rgba(0,0,0,0.07);
+            --shadow-lg: 0 12px 24px rgba(0,0,0,0.12);
+            --gold-shadow: 0 4px 12px rgba(212, 175, 55, 0.25);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-serif: 'Playfair Display', Georgia, serif;
+            --border-radius: 0.5rem;
+            --border-radius-lg: 0.75rem;
+            --border-radius-full: 9999px;
+        }
+        body {
+            font-family: var(--font-sans);
+            background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        /* Header */
+        .profile-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .profile-header .logo {
+            margin-bottom: 1rem;
+        }
+        .profile-header .logo img {
+            height: 50px;
+            width: auto;
+        }
+        .profile-header h1 {
+            font-size: 1.8rem;
+            font-family: var(--font-serif);
+            color: var(--primary-black);
+        }
+        .profile-header h1 i {
+            color: var(--gold);
+        }
+        .profile-header p {
+            color: var(--gray-medium);
+            font-size: 0.9rem;
+        }
+        
+        /* Profile Grid */
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 2rem;
+        }
+        
+        /* Sidebar */
+        .profile-sidebar {
+            background: var(--white);
+            border-radius: var(--border-radius-lg);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--gray-light);
+            position: sticky;
+            top: 20px;
+            transition: var(--transition);
+        }
+        .profile-sidebar:hover {
+            box-shadow: var(--shadow-lg);
+        }
+        .profile-avatar {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .avatar-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: var(--gold-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-black);
+            box-shadow: var(--gold-shadow);
+            transition: var(--transition);
+        }
+        .avatar-image:hover {
+            transform: scale(1.05);
+        }
+        .profile-avatar h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.25rem;
+        }
+        .profile-avatar p {
+            color: var(--gray-medium);
+            font-size: 0.8rem;
+        }
+        .profile-menu {
+            list-style: none;
+            margin-top: 1rem;
+        }
+        .profile-menu li {
+            margin-bottom: 0.5rem;
+        }
+        .profile-menu a {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.8rem 1rem;
+            color: var(--text-gray);
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+        .profile-menu a i {
+            width: 24px;
+            color: var(--gold-dark);
+            font-size: 1.1rem;
+        }
+        .profile-menu a:hover, .profile-menu a.active {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--gold-dark);
+            transform: translateX(5px);
+        }
+        .profile-menu a .badge {
+            margin-left: auto;
+            background: var(--gold);
+            color: var(--primary-black);
+            padding: 0.1rem 0.5rem;
+            border-radius: var(--border-radius-full);
+            font-size: 0.6rem;
+            font-weight: 700;
+        }
+        .logout-btn {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--gray-light);
+        }
+        .logout-btn a {
+            color: var(--danger);
+        }
+        .logout-btn a i {
+            color: var(--danger);
+        }
+        .logout-btn a:hover {
+            background: rgba(220, 53, 69, 0.1);
+        }
+        
+        /* Main Content */
+        .profile-content {
+            background: var(--white);
+            border-radius: var(--border-radius-lg);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--gray-light);
+            transition: var(--transition);
+        }
+        .profile-content:hover {
+            box-shadow: var(--shadow-lg);
+        }
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--gold);
+            display: inline-block;
+            color: var(--gold-dark);
+        }
+        .section-title i {
+            margin-right: 0.5rem;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.4rem;
+            font-weight: 500;
+            font-size: 0.875rem;
+            color: var(--text-gray);
+        }
+        .form-group label .required {
+            color: var(--danger);
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--gray-light);
+            border-radius: var(--border-radius);
+            font-size: 0.875rem;
+            transition: var(--transition);
+            font-family: var(--font-sans);
+            background: var(--white);
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: var(--gold-shadow);
+        }
+        .form-group input.error, .form-group select.error {
+            border-color: var(--danger);
+        }
+        .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            background: var(--gold-gradient);
+            color: var(--primary-black);
+            border: none;
+            border-radius: var(--border-radius-full);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold-dark);
+        }
+        .btn-outline:hover {
+            background: var(--gold-gradient);
+            color: var(--primary-black);
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--gold-shadow);
+        }
+        .btn-danger {
+            background: var(--danger);
+            color: white;
+        }
+        .btn-danger:hover {
+            background: #c82333;
+            box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+        }
+        .btn-sm {
+            padding: 0.3rem 0.8rem;
+            font-size: 0.75rem;
+        }
+        
+        /* Orders Table */
+        .orders-table {
+            overflow-x: auto;
+            margin-top: 0.5rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 500px;
+        }
+        th, td {
+            padding: 0.8rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--gray-light);
+        }
+        th {
+            background: var(--white-off);
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-gray);
+        }
+        tr:hover td {
+            background: rgba(212, 175, 55, 0.03);
+        }
+        .status-badge {
+            padding: 0.2rem 0.6rem;
+            border-radius: 2rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+        .status-pending { background: #fff3cd; color: #856404; }
+        .status-confirmed { background: #cfe2ff; color: #084298; }
+        .status-shipped { background: #cfe2ff; color: #084298; }
+        .status-delivered { background: #d1e7dd; color: #0f5132; }
+        .status-cancelled { background: #f8d7da; color: #721c24; }
+        
+        /* Address Cards */
+        .addresses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+            margin-top: 0.5rem;
+        }
+        .address-card {
+            background: var(--white-off);
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            border: 2px solid var(--gray-light);
+            position: relative;
+            transition: var(--transition);
+        }
+        .address-card:hover {
+            box-shadow: var(--shadow);
+        }
+        .address-card.default {
+            border-color: var(--gold);
+            background: rgba(212, 175, 55, 0.05);
+        }
+        .address-card .default-badge {
+            position: absolute;
+            top: -10px;
+            right: 10px;
+            background: var(--gold);
+            padding: 0.2rem 0.6rem;
+            border-radius: 2rem;
+            font-size: 0.6rem;
+            font-weight: 700;
+            color: var(--primary-black);
+        }
+        .address-card p {
+            font-size: 0.8rem;
+            margin-bottom: 0.3rem;
+        }
+        .address-card .address-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .address-actions {
+            margin-top: 0.5rem;
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .address-actions button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.75rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+        .address-actions button:hover {
+            background: var(--gray-light);
+        }
+        .address-actions .btn-edit { color: var(--gold-dark); }
+        .address-actions .btn-delete { color: var(--danger); }
+        .address-actions .btn-default { color: var(--success); }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(4px);
+        }
+        .modal.active {
+            display: flex;
+        }
+        .modal-content {
+            background: var(--white);
+            border-radius: var(--border-radius-lg);
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 1.5rem;
+            animation: modalIn 0.3s ease;
+        }
+        @keyframes modalIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--gold);
+        }
+        .modal-header h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--gold-dark);
+        }
+        .modal-header .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray-medium);
+            transition: var(--transition);
+        }
+        .modal-header .close-btn:hover {
+            color: var(--text-dark);
+            transform: rotate(90deg);
+        }
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--gray-light);
+        }
+        
+        /* Notification */
+        .notification-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1100;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .notification {
+            background: white;
+            padding: 0.8rem 1.2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            transform: translateX(400px);
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            margin-bottom: 0.5rem;
+            border-left: 4px solid;
+            max-width: 350px;
+        }
+        .notification.show { transform: translateX(0); }
+        .notification-success { border-left-color: var(--success); }
+        .notification-error { border-left-color: var(--danger); }
+        .notification-warning { border-left-color: var(--warning); }
+        .notification-info { border-left-color: #17a2b8; }
+        .notification button {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-left: auto;
+            color: var(--gray-medium);
+        }
+        
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 2rem;
+            color: var(--gray-medium);
+        }
+        .empty-state i {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            opacity: 0.3;
+            display: block;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .profile-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .profile-sidebar {
+                position: static;
+            }
+            .profile-sidebar .profile-menu {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+            .profile-sidebar .profile-menu li {
+                margin-bottom: 0;
+            }
+            .profile-sidebar .profile-menu a {
+                padding: 0.5rem 0.8rem;
+                font-size: 0.8rem;
+            }
+            .profile-sidebar .logout-btn {
+                border-top: none;
+                margin-top: 0;
+                padding-top: 0;
+            }
+        }
+        @media (max-width: 768px) {
+            .container { padding: 1rem; }
+            .row { grid-template-columns: 1fr; }
+            .profile-header h1 { font-size: 1.4rem; }
+            .profile-avatar .avatar-image { width: 80px; height: 80px; font-size: 2rem; }
+            .addresses-grid { grid-template-columns: 1fr; }
+            .orders-table table { min-width: 400px; }
+            .profile-sidebar .profile-menu {
+                flex-direction: column;
+            }
+        }
+        @media (max-width: 480px) {
+            .profile-sidebar .profile-menu a { font-size: 0.75rem; padding: 0.4rem 0.6rem; }
+            .profile-content { padding: 1rem; }
+            .btn { padding: 0.5rem 1rem; font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="profile-header">
+            <div class="logo">
+                <img src="assets/logoPANSERV.png" alt="Le Paname Service" onerror="this.src='https://placehold.co/200x50/D4AF37/0a0a0a?text=Le+Paname+Service'">
+            </div>
+            <h1><i class="fas fa-user-circle"></i> Mon profil</h1>
+            <p>Gérez vos informations personnelles et commandes</p>
+        </div>
+        
+        <div class="profile-grid">
+            <!-- Sidebar -->
+            <aside class="profile-sidebar">
+                <div class="profile-avatar">
+                    <div class="avatar-image" id="avatarInitials">JD</div>
+                    <h3 id="userName">Jean Dupont</h3>
+                    <p id="userEmail">jean@example.com</p>
+                </div>
+                <ul class="profile-menu">
+                    <li><a href="#" data-tab="info" class="active"><i class="fas fa-user"></i> Informations personnelles</a></li>
+                    <li><a href="#" data-tab="orders"><i class="fas fa-shopping-bag"></i> Mes commandes <span class="badge" id="ordersBadge">0</span></a></li>
+                    <li><a href="#" data-tab="addresses"><i class="fas fa-map-marker-alt"></i> Adresses de livraison <span class="badge" id="addressesBadge">0</span></a></li>
+                    <li><a href="#" data-tab="security"><i class="fas fa-lock"></i> Sécurité</a></li>
+                    <li class="logout-btn"><a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Déconnexion</a></li>
+                </ul>
+            </aside>
+            
+            <!-- Main Content -->
+            <main class="profile-content">
+                <!-- Tab: Informations personnelles -->
+                <div id="tab-info" class="tab-content active">
+                    <h2 class="section-title"><i class="fas fa-user"></i> Informations personnelles</h2>
+                    <form id="profileForm" novalidate>
+                        <div class="row">
+                            <div class="form-group">
+                                <label>Nom complet <span class="required">*</span></label>
+                                <input type="text" id="fullName" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Email <span class="required">*</span></label>
+                                <input type="email" id="email" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label>Téléphone</label>
+                                <input type="tel" id="phone">
+                            </div>
+                            <div class="form-group">
+                                <label>Date de naissance</label>
+                                <input type="date" id="birthdate">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Genre</label>
+                            <select id="gender">
+                                <option value="">Non précisé</option>
+                                <option value="male">Homme</option>
+                                <option value="female">Femme</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn"><i class="fas fa-save"></i> Enregistrer les modifications</button>
+                    </form>
+                </div>
+                
+                <!-- Tab: Mes commandes -->
+                <div id="tab-orders" class="tab-content">
+                    <h2 class="section-title"><i class="fas fa-shopping-bag"></i> Mes commandes</h2>
+                    <div class="orders-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>N° commande</th>
+                                    <th>Date</th>
+                                    <th>Montant</th>
+                                    <th>Statut</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ordersList"></tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- Tab: Adresses de livraison -->
+                <div id="tab-addresses" class="tab-content">
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem;">
+                        <h2 class="section-title" style="margin-bottom:0;"><i class="fas fa-map-marker-alt"></i> Mes adresses</h2>
+                        <button class="btn" id="addAddressBtn"><i class="fas fa-plus"></i> Ajouter</button>
+                    </div>
+                    <div id="addressesList" class="addresses-grid"></div>
+                </div>
+                
+                <!-- Tab: Sécurité -->
+                <div id="tab-security" class="tab-content">
+                    <h2 class="section-title"><i class="fas fa-lock"></i> Sécurité</h2>
+                    <form id="passwordForm" novalidate>
+                        <div class="form-group">
+                            <label>Mot de passe actuel <span class="required">*</span></label>
+                            <input type="password" id="currentPassword" required placeholder="Entrez votre mot de passe actuel">
+                        </div>
+                        <div class="form-group">
+                            <label>Nouveau mot de passe <span class="required">*</span></label>
+                            <input type="password" id="newPassword" required placeholder="Minimum 6 caractères">
+                        </div>
+                        <div class="form-group">
+                            <label>Confirmer le nouveau mot de passe <span class="required">*</span></label>
+                            <input type="password" id="confirmPassword" required placeholder="Confirmez votre nouveau mot de passe">
+                        </div>
+                        <button type="submit" class="btn"><i class="fas fa-key"></i> Changer le mot de passe</button>
+                    </form>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <!-- Modal Adresse -->
+    <div class="modal" id="addressModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="addressModalTitle"><i class="fas fa-plus-circle" style="color:var(--gold);"></i> Ajouter une adresse</h3>
+                <button class="close-btn" onclick="closeAddressModal()"><i class="fas fa-times"></i></button>
+            </div>
+            <form id="addressForm" novalidate>
+                <input type="hidden" id="addressId">
+                <div class="form-group">
+                    <label>Nom de l'adresse <span class="required">*</span></label>
+                    <input type="text" id="addressName" placeholder="Ex: Domicile, Travail" required>
+                </div>
+                <div class="form-group">
+                    <label>Adresse complète <span class="required">*</span></label>
+                    <input type="text" id="addressLine" placeholder="Rue, numéro" required>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label>Ville <span class="required">*</span></label>
+                        <input type="text" id="addressCity" value="Yaoundé" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Code postal</label>
+                        <input type="text" id="addressPostalCode" placeholder="Ex: 00237">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Téléphone de livraison <span class="required">*</span></label>
+                    <input type="tel" id="addressPhone" required placeholder="6XXXXXXXX">
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="addressDefault"> 
+                        Définir comme adresse par défaut
+                    </label>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-outline" onclick="closeAddressModal()">Annuler</button>
+                    <button type="submit" class="btn"><i class="fas fa-save"></i> Enregistrer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Notification Container -->
+    <div class="notification-container" id="notificationContainer"></div>
+
+    <!-- ============================================================ -->
+    <!-- === SCRIPT PRINCIPAL CORRIGÉ === -->
+    <!-- ============================================================ -->
+    <script>
+        // ====================================================
+        // GESTIONNAIRE DE PROFIL
+        // ====================================================
+        const ProfileManager = (function() {
+            'use strict';
+
+            // === CONFIGURATION ===
+            const CONFIG = {
+                storageKey: 'paname_user_profile',
+                ordersKey: 'paname_user_orders',
+                addressesKey: 'paname_user_addresses',
+                sessionKey: 'paname_user_session'
+            };
+
+            // === DONNÉES PAR DÉFAUT ===
+            const DEFAULT_USER = {
+                id: 1,
+                fullName: 'Jean Dupont',
+                email: 'jean.dupont@example.com',
+                phone: '657715482',
+                birthdate: '1990-05-15',
+                gender: 'male'
+            };
+
+            const DEFAULT_ORDERS = [
+                { id: 'CMD-001', date: '2025-01-15', total: 500000, status: 'delivered', items: ['Ordinateur Portable', 'Souris Gamer'] },
+                { id: 'CMD-002', date: '2025-01-10', total: 35000, status: 'confirmed', items: ['Tensiomètre'] },
+                { id: 'CMD-003', date: '2024-12-20', total: 250000, status: 'delivered', items: ['Montre de Luxe'] },
+                { id: 'CMD-004', date: '2025-01-25', total: 185000, status: 'pending', items: ['Bracelet en Or'] }
+            ];
+
+            const DEFAULT_ADDRESSES = [
+                { id: 1, name: 'Domicile', line: 'Montée Mvan Santa Lucia', city: 'Yaoundé', postalCode: '', phone: '657715482', isDefault: true },
+                { id: 2, name: 'Travail', line: 'Centre-ville, Immeuble BEAC', city: 'Yaoundé', postalCode: '', phone: '676391816', isDefault: false }
+            ];
+
+            // === ÉTAT ===
+            let currentUser = null;
+            let orders = [];
+            let addresses = [];
+
+            // === PRIVÉ ===
+
+            function loadData() {
+                try {
+                    // Charger l'utilisateur
+                    const userData = localStorage.getItem(CONFIG.storageKey);
+                    if (userData) {
+                        currentUser = JSON.parse(userData);
+                    } else {
+                        currentUser = JSON.parse(JSON.stringify(DEFAULT_USER));
+                        saveUser();
+                    }
+
+                    // Charger les commandes
+                    const ordersData = localStorage.getItem(CONFIG.ordersKey);
+                    if (ordersData) {
+                        orders = JSON.parse(ordersData);
+                    } else {
+                        orders = JSON.parse(JSON.stringify(DEFAULT_ORDERS));
+                        saveOrders();
+                    }
+
+                    // Charger les adresses
+                    const addressesData = localStorage.getItem(CONFIG.addressesKey);
+                    if (addressesData) {
+                        addresses = JSON.parse(addressesData);
+                    } else {
+                        addresses = JSON.parse(JSON.stringify(DEFAULT_ADDRESSES));
+                        saveAddresses();
+                    }
+                } catch (e) {
+                    console.warn('Erreur chargement données:', e);
+                    currentUser = JSON.parse(JSON.stringify(DEFAULT_USER));
+                    orders = JSON.parse(JSON.stringify(DEFAULT_ORDERS));
+                    addresses = JSON.parse(JSON.stringify(DEFAULT_ADDRESSES));
+                }
+            }
+
+            function saveUser() {
+                try {
+                    localStorage.setItem(CONFIG.storageKey, JSON.stringify(currentUser));
+                } catch (e) { console.warn('Erreur sauvegarde utilisateur:', e); }
+            }
+
+            function saveOrders() {
+                try {
+                    localStorage.setItem(CONFIG.ordersKey, JSON.stringify(orders));
+                } catch (e) { console.warn('Erreur sauvegarde commandes:', e); }
+            }
+
+            function saveAddresses() {
+                try {
+                    localStorage.setItem(CONFIG.addressesKey, JSON.stringify(addresses));
+                } catch (e) { console.warn('Erreur sauvegarde adresses:', e); }
+            }
+
+            // === PUBLIQUE ===
+
+            function getUser() {
+                if (!currentUser) loadData();
+                return currentUser;
+            }
+
+            function updateUser(updates) {
+                currentUser = { ...currentUser, ...updates };
+                saveUser();
+                return currentUser;
+            }
+
+            function getOrders() {
+                if (!orders.length) loadData();
+                return orders;
+            }
+
+            function addOrder(order) {
+                orders.unshift(order);
+                saveOrders();
+                return order;
+            }
+
+            function updateOrder(id, updates) {
+                const index = orders.findIndex(o => o.id === id);
+                if (index === -1) return null;
+                orders[index] = { ...orders[index], ...updates };
+                saveOrders();
+                return orders[index];
+            }
+
+            function getAddresses() {
+                if (!addresses.length) loadData();
+                return addresses;
+            }
+
+            function addAddress(address) {
+                const newAddress = {
+                    id: Date.now(),
+                    name: address.name || 'Sans nom',
+                    line: address.line || '',
+                    city: address.city || 'Yaoundé',
+                    postalCode: address.postalCode || '',
+                    phone: address.phone || '',
+                    isDefault: address.isDefault || false
+                };
+                if (newAddress.isDefault) {
+                    addresses = addresses.map(a => ({ ...a, isDefault: false }));
+                }
+                addresses.push(newAddress);
+                saveAddresses();
+                return newAddress;
+            }
+
+            function updateAddress(id, updates) {
+                const index = addresses.findIndex(a => a.id === id);
+                if (index === -1) return null;
+                if (updates.isDefault) {
+                    addresses = addresses.map(a => ({ ...a, isDefault: false }));
+                }
+                addresses[index] = { ...addresses[index], ...updates };
+                saveAddresses();
+                return addresses[index];
+            }
+
+            function deleteAddress(id) {
+                const index = addresses.findIndex(a => a.id === id);
+                if (index === -1) return false;
+                if (addresses[index].isDefault) {
+                    // Ne pas supprimer l'adresse par défaut
+                    return false;
+                }
+                addresses.splice(index, 1);
+                saveAddresses();
+                return true;
+            }
+
+            function setDefaultAddress(id) {
+                addresses = addresses.map(a => ({ ...a, isDefault: a.id === id }));
+                saveAddresses();
+                return true;
+            }
+
+            function getDefaultAddress() {
+                return addresses.find(a => a.isDefault) || addresses[0] || null;
+            }
+
+            function formatPrice(price) {
+                return price.toLocaleString() + ' Fcfa';
+            }
+
+            function getStatusLabel(status) {
+                const labels = {
+                    pending: 'En attente',
+                    confirmed: 'Confirmée',
+                    shipped: 'Expédiée',
+                    delivered: 'Livrée',
+                    cancelled: 'Annulée'
+                };
+                return labels[status] || status;
+            }
+
+            function getStatusClass(status) {
+                return `status-${status}`;
+            }
+
+            // === EXPOSITION ===
+            return {
+                getUser,
+                updateUser,
+                getOrders,
+                addOrder,
+                updateOrder,
+                getAddresses,
+                addAddress,
+                updateAddress,
+                deleteAddress,
+                setDefaultAddress,
+                getDefaultAddress,
+                formatPrice,
+                getStatusLabel,
+                getStatusClass
+            };
+
+        })();
+
+        // ====================================================
+        // NOTIFICATIONS
+        // ====================================================
+        function showNotification(message, type = 'info') {
+            const container = document.getElementById('notificationContainer');
+            if (!container) return;
+
+            const icons = {
+                success: 'fa-check-circle',
+                error: 'fa-exclamation-circle',
+                warning: 'fa-exclamation-triangle',
+                info: 'fa-info-circle'
+            };
+
+            const notif = document.createElement('div');
+            notif.className = `notification notification-${type}`;
+            notif.innerHTML = `
+                <i class="fas ${icons[type] || icons.info}"></i>
+                <span>${message}</span>
+                <button onclick="this.parentElement.remove()">×</button>
+            `;
+            container.appendChild(notif);
+            setTimeout(() => notif.classList.add('show'), 10);
+            setTimeout(() => {
+                notif.classList.remove('show');
+                setTimeout(() => notif.remove(), 300);
+            }, 4000);
+        }
+
+        // ====================================================
+        // AFFICHAGE DU PROFIL
+        // ====================================================
+        function updateProfileDisplay() {
+            const user = ProfileManager.getUser();
+            document.getElementById('userName').textContent = user.fullName;
+            document.getElementById('userEmail').textContent = user.email;
+            
+            const initials = user.fullName.split(' ').map(n => n[0]).join('').toUpperCase();
+            document.getElementById('avatarInitials').textContent = initials;
+            
+            document.getElementById('fullName').value = user.fullName;
+            document.getElementById('email').value = user.email;
+            document.getElementById('phone').value = user.phone || '';
+            document.getElementById('birthdate').value = user.birthdate || '';
+            document.getElementById('gender').value = user.gender || '';
+        }
+
+        // ====================================================
+        // AFFICHAGE DES COMMANDES
+        // ====================================================
+        function renderOrders() {
+            const tbody = document.getElementById('ordersList');
+            if (!tbody) return;
+
+            const orders = ProfileManager.getOrders();
+            document.getElementById('ordersBadge').textContent = orders.length;
+
+            if (orders.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="5" class="empty-state" style="padding:2rem;">
+                            <i class="fas fa-shopping-bag"></i>
+                            <p>Aucune commande pour le moment</p>
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            tbody.innerHTML = orders.map(order => `
+                <tr>
+                    <td><strong>${order.id}</strong></td>
+                    <td>${order.date}</td>
+                    <td>${ProfileManager.formatPrice(order.total)}</td>
+                    <td>
+                        <span class="status-badge ${ProfileManager.getStatusClass(order.status)}">
+                            ${ProfileManager.getStatusLabel(order.status)}
+                        </span>
+                    </td>
+                    <td>
+                        <button class="btn btn-sm" onclick="viewOrder('${order.id}')">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function viewOrder(orderId) {
+            const orders = ProfileManager.getOrders();
+            const order = orders.find(o => o.id === orderId);
+            if (!order) {
+                showNotification('Commande non trouvée', 'error');
+                return;
+            }
+            
+            const items = order.items ? order.items.join('\n') : 'Aucun détail';
+            alert(
+                `📋 DÉTAILS DE LA COMMANDE\n` +
+                `═══════════════════════\n\n` +
+                `🆔 N° ${order.id}\n` +
+                `📅 Date : ${order.date}\n` +
+                `💰 Montant : ${ProfileManager.formatPrice(order.total)}\n` +
+                `📊 Statut : ${ProfileManager.getStatusLabel(order.status)}\n\n` +
+                `📦 Articles :\n${items}\n` +
+                `═══════════════════════`
+            );
+        }
+
+        // ====================================================
+        // AFFICHAGE DES ADRESSES
+        // ====================================================
+        function renderAddresses() {
+            const container = document.getElementById('addressesList');
+            if (!container) return;
+
+            const addresses = ProfileManager.getAddresses();
+            document.getElementById('addressesBadge').textContent = addresses.length;
+
+            if (addresses.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state" style="grid-column:1/-1;">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>Aucune adresse enregistrée</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = addresses.map(addr => `
+                <div class="address-card ${addr.isDefault ? 'default' : ''}">
+                    ${addr.isDefault ? '<div class="default-badge">Par défaut</div>' : ''}
+                    <p class="address-name">${addr.name}</p>
+                    <p>${addr.line}</p>
+                    <p>${addr.city} ${addr.postalCode ? '- ' + addr.postalCode : ''}</p>
+                    <p><i class="fas fa-phone"></i> ${addr.phone}</p>
+                    <div class="address-actions">
+                        <button class="btn-edit" onclick="editAddress(${addr.id})">
+                            <i class="fas fa-edit"></i> Modifier
+                        </button>
+                        ${!addr.isDefault ? `
+                            <button class="btn-delete" onclick="deleteAddress(${addr.id})">
+                                <i class="fas fa-trash"></i> Supprimer
+                            </button>
+                            <button class="btn-default" onclick="setDefaultAddress(${addr.id})">
+                                <i class="fas fa-check"></i> Par défaut
+                            </button>
+                        ` : ''}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // ====================================================
+        // GESTION DES ADRESSES
+        // ====================================================
+        function openAddressModal(address = null) {
+            const modal = document.getElementById('addressModal');
+            const title = document.getElementById('addressModalTitle');
+            
+            if (address) {
+                title.innerHTML = '<i class="fas fa-edit" style="color:var(--gold);"></i> Modifier l\'adresse';
+                document.getElementById('addressId').value = address.id;
+                document.getElementById('addressName').value = address.name;
+                document.getElementById('addressLine').value = address.line;
+                document.getElementById('addressCity').value = address.city;
+                document.getElementById('addressPostalCode').value = address.postalCode || '';
+                document.getElementById('addressPhone').value = address.phone;
+                document.getElementById('addressDefault').checked = address.isDefault || false;
+            } else {
+                title.innerHTML = '<i class="fas fa-plus-circle" style="color:var(--gold);"></i> Ajouter une adresse';
+                document.getElementById('addressForm').reset();
+                document.getElementById('addressId').value = '';
+                document.getElementById('addressCity').value = 'Yaoundé';
+                document.getElementById('addressDefault').checked = false;
+            }
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeAddressModal() {
+            document.getElementById('addressModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function editAddress(id) {
+            const addresses = ProfileManager.getAddresses();
+            const address = addresses.find(a => a.id === id);
+            if (address) {
+                openAddressModal(address);
+            } else {
+                showNotification('Adresse non trouvée', 'error');
+            }
+        }
+
+        function deleteAddress(id) {
+            if (!confirm('⚠️ Supprimer cette adresse définitivement ?')) return;
+            
+            const addresses = ProfileManager.getAddresses();
+            const address = addresses.find(a => a.id === id);
+            if (address && address.isDefault) {
+                showNotification('Impossible de supprimer l\'adresse par défaut', 'error');
+                return;
+            }
+            
+            if (ProfileManager.deleteAddress(id)) {
+                renderAddresses();
+                showNotification('Adresse supprimée avec succès', 'success');
+            } else {
+                showNotification('Erreur lors de la suppression', 'error');
+            }
+        }
+
+        function setDefaultAddress(id) {
+            if (ProfileManager.setDefaultAddress(id)) {
+                renderAddresses();
+                showNotification('Adresse par défaut mise à jour', 'success');
+            }
+        }
+
+        // ====================================================
+        // FORMULAIRES
+        // ====================================================
+        document.getElementById('profileForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const fullName = document.getElementById('fullName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            
+            if (!fullName || !email) {
+                showNotification('Veuillez remplir tous les champs obligatoires', 'error');
+                return;
+            }
+            
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showNotification('Email invalide', 'error');
+                return;
+            }
+            
+            ProfileManager.updateUser({
+                fullName: fullName,
+                email: email,
+                phone: document.getElementById('phone').value.trim(),
+                birthdate: document.getElementById('birthdate').value,
+                gender: document.getElementById('gender').value
+            });
+            
+            updateProfileDisplay();
+            showNotification('✅ Profil mis à jour avec succès', 'success');
+        });
+
+        document.getElementById('passwordForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const currentPwd = document.getElementById('currentPassword').value;
+            const newPwd = document.getElementById('newPassword').value;
+            const confirmPwd = document.getElementById('confirmPassword').value;
+            
+            if (!currentPwd || !newPwd || !confirmPwd) {
+                showNotification('Veuillez remplir tous les champs', 'error');
+                return;
+            }
+            
+            if (newPwd !== confirmPwd) {
+                showNotification('Les mots de passe ne correspondent pas', 'error');
+                return;
+            }
+            
+            if (newPwd.length < 6) {
+                showNotification('Le mot de passe doit contenir au moins 6 caractères', 'error');
+                return;
+            }
+            
+            showNotification('✅ Mot de passe modifié avec succès', 'success');
+            this.reset();
+        });
+
+        document.getElementById('addressForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const id = parseInt(document.getElementById('addressId').value);
+            const name = document.getElementById('addressName').value.trim();
+            const line = document.getElementById('addressLine').value.trim();
+            const city = document.getElementById('addressCity').value.trim();
+            const phone = document.getElementById('addressPhone').value.trim();
+            const isDefault = document.getElementById('addressDefault').checked;
+            
+            if (!name || !line || !city || !phone) {
+                showNotification('Veuillez remplir tous les champs obligatoires', 'error');
+                return;
+            }
+            
+            const addressData = { name, line, city, postalCode: document.getElementById('addressPostalCode').value.trim(), phone, isDefault };
+            
+            if (id) {
+                ProfileManager.updateAddress(id, addressData);
+                showNotification('✅ Adresse modifiée avec succès', 'success');
+            } else {
+                ProfileManager.addAddress(addressData);
+                showNotification('✅ Adresse ajoutée avec succès', 'success');
+            }
+            
+            renderAddresses();
+            closeAddressModal();
+        });
+
+        // ====================================================
+        // ONGLETS
+        // ====================================================
+        document.querySelectorAll('.profile-menu a[data-tab]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const tabId = this.dataset.tab;
+                
+                document.querySelectorAll('.profile-menu a').forEach(a => a.classList.remove('active'));
+                this.classList.add('active');
+                
+                document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+                document.getElementById(`tab-${tabId}`).classList.add('active');
+                
+                // Rafraîchir les données si nécessaire
+                if (tabId === 'orders') renderOrders();
+                if (tabId === 'addresses') renderAddresses();
+            });
+        });
+
+        // ====================================================
+        // ÉVÉNEMENTS
+        // ====================================================
+        document.getElementById('addAddressBtn').addEventListener('click', () => openAddressModal());
+
+        // Fermer le modal en cliquant à l'extérieur
+        document.getElementById('addressModal').addEventListener('click', function(e) {
+            if (e.target === this) closeAddressModal();
+        });
+
+        // Fermer avec la touche Echap
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeAddressModal();
+        });
+
+        // ====================================================
+        // AUTHENTIFICATION
+        // ====================================================
+        function checkAuth() {
+            const session = localStorage.getItem(ProfileManager.CONFIG?.sessionKey || 'paname_user_session');
+            if (!session) {
+                window.location.href = 'index.html';
+            }
+        }
+
+        document.getElementById('logoutBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            if (confirm('🔒 Voulez-vous vous déconnecter ?')) {
+                localStorage.removeItem('paname_user_session');
+                localStorage.removeItem('paname_user_profile');
+                showNotification('🔓 Déconnecté avec succès', 'success');
+                setTimeout(() => { window.location.href = 'index.html'; }, 1500);
+            }
+        });
+
+        // ====================================================
+        // INITIALISATION
+        // ====================================================
+        document.addEventListener('DOMContentLoaded', function() {
+            checkAuth();
+            updateProfileDisplay();
+            renderOrders();
+            renderAddresses();
+            
+            console.log('👤 Page Profil - Gestion du compte utilisateur');
+            const user = ProfileManager.getUser();
+            console.log(`📧 Utilisateur: ${user.fullName} (${user.email})`);
+            console.log(`📦 ${ProfileManager.getOrders().length} commandes`);
+            console.log(`📍 ${ProfileManager.getAddresses().length} adresses`);
+        });
+
+        // === EXPOSITION GLOBALE ===
+        window.ProfileManager = ProfileManager;
+        window.showNotification = showNotification;
+        window.viewOrder = viewOrder;
+        window.editAddress = editAddress;
+        window.deleteAddress = deleteAddress;
+        window.setDefaultAddress = setDefaultAddress;
+        window.openAddressModal = openAddressModal;
+        window.closeAddressModal = closeAddressModal;
+        window.renderOrders = renderOrders;
+        window.renderAddresses = renderAddresses;
+
+        console.log('✅ Module Profil chargé avec succès');
+    </script>
+</body>
+</html>

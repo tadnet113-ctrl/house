@@ -1,0 +1,1740 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="description" content="Paname Store - Votre boutique d'ordinateurs portables, desktops et accessoires high-tech à Yaoundé, Cameroun.">
+    <meta name="keywords" content="ordinateurs portables, desktops, gaming, high-tech, Yaoundé, Cameroun">
+    <meta name="author" content="Le Paname Service">
+    <meta name="theme-color" content="#D4AF37">
+    
+    <title>Paname Store - Ordinateurs & High-Tech | Le Paname Service</title>
+
+    <!-- ============================================================ -->
+    <!-- === BIBLIOTHÈQUES CORRIGÉES === -->
+    <!-- ============================================================ -->
+    
+    <!-- 1. SWIPER CSS (version stable 11.0.5) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11.0.5/swiper-bundle.min.css">
+    
+    <!-- 2. FONT AWESOME 6 (version gratuite) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <!-- 3. GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- 4. JQUERY (AJOUTÉ pour compatibilité) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js">
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary-black: #0a0a0a;
+            --secondary-black: #111111;
+            --dark-gray: #1a1a1a;
+            --gold: #D4AF37;
+            --gold-light: #F4D03F;
+            --gold-dark: #B8960C;
+            --gold-gradient: linear-gradient(135deg, #D4AF37 0%, #F4D03F 50%, #D4AF37 100%);
+            --white: #ffffff;
+            --white-off: #f8f9fa;
+            --gray-light: #e9ecef;
+            --gray-medium: #6c757d;
+            --text-dark: #212529;
+            --text-gray: #495057;
+            --success: #28a745;
+            --danger: #dc3545;
+            --whatsapp-color: #25D366;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.04);
+            --shadow: 0 4px 6px rgba(0,0,0,0.07);
+            --shadow-lg: 0 12px 24px rgba(0,0,0,0.12);
+            --gold-shadow: 0 4px 12px rgba(212, 175, 55, 0.25);
+            --transition: all 0.3s ease;
+            --font-sans: 'Inter', sans-serif;
+            --font-serif: 'Playfair Display', serif;
+            --container-padding: 1rem;
+            --container-max-width: 1400px;
+            --border-radius: 0.5rem;
+            --border-radius-lg: 0.75rem;
+            --border-radius-full: 9999px;
+            --facebook-color: #1877F2;
+            --instagram-color: #E4405F;
+            --tiktok-color: #000000;
+            --youtube-color: #FF0000;
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-sans); color: var(--text-dark); background-color: var(--white); line-height: 1.6; overflow-x: hidden; min-height: 100vh; display: flex; flex-direction: column; }
+        .container { max-width: var(--container-max-width); margin: 0 auto; padding: 0 var(--container-padding); width: 100%; }
+
+        /* ========== HEADER TOP ========== */
+        .header-top {
+            background: linear-gradient(135deg, var(--primary-black) 0%, var(--dark-gray) 100%);
+            color: var(--white);
+            padding: 0.4rem 0;
+            border-bottom: 2px solid var(--gold);
+            overflow: hidden;
+        }
+        .header-top .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .scrolling-banner {
+            flex: 1;
+            overflow: hidden;
+            position: relative;
+            height: 32px;
+            min-width: 200px;
+        }
+        .scrolling-content {
+            display: flex;
+            animation: scrollBanner 20s linear infinite;
+            white-space: nowrap;
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            align-items: center;
+        }
+        .scrolling-content:hover { animation-play-state: paused; }
+        .banner-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0 1.2rem;
+            font-size: 0.7rem;
+            color: var(--white);
+        }
+        .banner-item i { color: var(--gold); font-size: 0.8rem; }
+        .banner-item strong { color: var(--gold); }
+        @keyframes scrollBanner {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .customer-service {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            flex-shrink: 0;
+            flex-wrap: wrap;
+            font-size: 0.7rem;
+        }
+        .customer-service a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .customer-service a:hover { color: var(--gold); }
+        .customer-service i { color: var(--gold); margin-right: 0.3rem; }
+
+        /* ========== HEADER MAIN ========== */
+        .header-main { background: var(--white); box-shadow: var(--shadow); position: sticky; top: 0; z-index: 1000; }
+        .header-main .container { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 65px; padding: 0.5rem var(--container-padding); }
+        .logo { flex-shrink: 0; }
+        .logo img { height: 42px; width: auto; transition: var(--transition); max-width: 100%; }
+        .logo img:hover { transform: scale(1.02); }
+        .admin-badge-header { background: var(--gold-gradient); padding: 0.2rem 0.6rem; border-radius: var(--border-radius-full); font-size: 0.55rem; font-weight: 700; color: var(--primary-black); margin-left: 0.5rem; display: none; }
+        .admin-badge-header.show { display: inline-block; }
+        .search-wrapper { flex: 1; max-width: 500px; margin: 0 auto; min-width: 120px; }
+        .search-form { display: flex; border: 2px solid var(--gray-light); border-radius: var(--border-radius-full); overflow: hidden; transition: var(--transition); width: 100%; background: var(--white); }
+        .search-form:focus-within { border-color: var(--gold); box-shadow: var(--gold-shadow); }
+        .search-input { flex: 1; padding: 0.6rem 1.2rem; border: none; outline: none; font-size: 0.85rem; min-width: 0; width: 100%; background: transparent; }
+        .search-btn { background: var(--gold-gradient); border: none; padding: 0.6rem 1.5rem; cursor: pointer; font-weight: 600; transition: var(--transition); display: flex; align-items: center; gap: 0.4rem; font-size: 0.8rem; white-space: nowrap; flex-shrink: 0; color: var(--primary-black); }
+        .search-btn span { display: inline; }
+        .search-btn:hover { opacity: 0.85; }
+        .header-actions { display: flex; align-items: center; gap: 0.6rem; flex-shrink: 0; }
+        .action-btn { position: relative; width: 40px; height: 40px; border-radius: var(--border-radius-full); display: flex; align-items: center; justify-content: center; background: transparent; border: 1px solid var(--gray-light); cursor: pointer; transition: var(--transition); color: var(--text-dark); font-size: 1rem; text-decoration: none; }
+        .action-btn:hover { background: var(--gold); border-color: var(--gold); color: var(--primary-black); transform: translateY(-2px); }
+        .cart-badge, .wishlist-badge { position: absolute; top: -5px; right: -5px; background: var(--gold-gradient); color: var(--primary-black); font-size: 0.5rem; font-weight: 800; min-width: 16px; height: 16px; border-radius: var(--border-radius-full); display: flex; align-items: center; justify-content: center; padding: 0 3px; border: 1px solid var(--white); }
+
+        /* ========== MENU PRINCIPAL ========== */
+        .nav-wrapper {
+            background: linear-gradient(135deg, var(--primary-black) 0%, var(--dark-gray) 100%);
+            border-bottom: 2px solid var(--gold);
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            position: sticky;
+            top: 65px;
+            z-index: 999;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.4rem var(--container-padding);
+            position: relative;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 0;
+            flex-wrap: wrap;
+            margin: 0;
+            padding: 0;
+        }
+        .nav-item { position: relative; }
+        .nav-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.6rem 0.9rem;
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.78rem;
+            transition: var(--transition);
+            border-bottom: 2px solid transparent;
+            border-radius: var(--border-radius-full);
+        }
+        .nav-link:hover, .nav-link.active {
+            color: var(--gold);
+            border-bottom-color: var(--gold);
+            background: rgba(212, 175, 55, 0.08);
+        }
+
+        /* ========== MENU RECTANGLES ========== */
+        .menu-rectangles {
+            display: flex;
+            gap: 0.8rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .large-rectangle {
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: var(--border-radius-full);
+            padding: 0.3rem 0.8rem;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        .social-icons-row {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+        }
+        .social-icons-row a {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            font-size: 0.9rem;
+            text-decoration: none;
+            background: transparent;
+        }
+        .social-icons-row a.facebook { color: var(--facebook-color); }
+        .social-icons-row a.instagram { color: var(--instagram-color); }
+        .social-icons-row a.whatsapp { color: var(--whatsapp-color); }
+        .social-icons-row a.tiktok { color: var(--tiktok-color); }
+        .social-icons-row a.youtube { color: var(--youtube-color); }
+        .social-icons-row a:hover {
+            transform: translateY(-2px) scale(1.08);
+            filter: brightness(1.2);
+        }
+        .small-rectangle {
+            background: var(--gold-gradient);
+            border-radius: var(--border-radius-full);
+            border: 1px solid var(--gold-light);
+            overflow: hidden;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .small-rectangle:hover {
+            border-color: var(--gold-light);
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.4);
+            transform: scale(1.02);
+        }
+        .rectangle-header {
+            padding: 0.4rem 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: transparent;
+            gap: 0.8rem;
+        }
+        .rectangle-header span {
+            color: var(--primary-black);
+            font-size: 0.7rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .rectangle-header i { font-size: 0.8rem; color: var(--primary-black); }
+        .hamburger-mini {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5px;
+            cursor: pointer;
+        }
+        .hamburger-mini span {
+            width: 16px;
+            height: 2px;
+            background: var(--primary-black);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        /* ========== SERVICES SIDEBAR ========== */
+        .services-sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 3000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            backdrop-filter: blur(4px);
+        }
+        .services-sidebar-overlay.active { opacity: 1; visibility: visible; }
+        .services-sidebar {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            max-width: 400px;
+            height: 100vh;
+            background: var(--white);
+            box-shadow: var(--shadow-lg);
+            z-index: 3001;
+            transition: right 0.35s ease;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .services-sidebar.active { right: 0; }
+        .services-sidebar-header {
+            background: var(--primary-black);
+            padding: 1.2rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 2px solid var(--gold);
+            flex-shrink: 0;
+        }
+        .services-sidebar-header h3 {
+            color: var(--gold);
+            font-size: 1.2rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-family: var(--font-serif);
+        }
+        .close-sidebar-btn {
+            background: rgba(255, 255, 255, 0.08);
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--gold);
+            font-size: 1.1rem;
+        }
+        .close-sidebar-btn:hover { background: var(--gold); color: var(--primary-black); transform: rotate(90deg); }
+        .services-sidebar-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1.2rem;
+        }
+        .service-category-sidebar {
+            margin-bottom: 1.5rem;
+            background: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(212, 175, 55, 0.08);
+        }
+        .service-category-sidebar h4 {
+            background: rgba(212, 175, 55, 0.06);
+            color: var(--gold-dark);
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin: 0;
+            padding: 0.8rem 1.2rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.12);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .service-category-sidebar ul {
+            list-style: none;
+            padding: 0.3rem 0;
+        }
+        .service-category-sidebar ul li a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 0.88rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.6rem 1.2rem;
+            transition: var(--transition);
+            border-left: 3px solid transparent;
+        }
+        .service-category-sidebar ul li a i {
+            width: 22px;
+            color: var(--gold);
+            font-size: 0.85rem;
+        }
+        .service-category-sidebar ul li a:hover {
+            background: rgba(212, 175, 55, 0.05);
+            color: var(--gold-dark);
+            border-left-color: var(--gold);
+            padding-left: 1.5rem;
+        }
+        .services-sidebar-footer {
+            padding: 0.8rem 1.5rem;
+            border-top: 1px solid var(--gray-light);
+            background: var(--white-off);
+            text-align: center;
+            flex-shrink: 0;
+        }
+        .services-sidebar-footer p { font-size: 0.7rem; color: var(--gray-medium); }
+        .services-sidebar-footer .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-top: 0.4rem;
+            flex-wrap: wrap;
+        }
+        .services-sidebar-footer .contact-info a {
+            color: var(--gold-dark);
+            text-decoration: none;
+            font-size: 0.65rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .services-sidebar-footer .contact-info a:hover { color: var(--gold); }
+
+        /* ========== MOBILE SIDEBAR ========== */
+        .menu-overlay { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.5); z-index: 1999; opacity: 0; transition: opacity 0.3s ease; backdrop-filter: blur(3px); }
+        .menu-overlay.active { display: block; opacity: 1; }
+        .mobile-sidebar { position: fixed; top: 0; left: -100%; width: 85%; max-width: 360px; height: 100vh; background: var(--white); box-shadow: var(--shadow-lg); z-index: 2000; transition: left 0.3s ease; overflow: hidden; display: flex; flex-direction: column; }
+        .mobile-sidebar.active { left: 0; }
+        .sidebar-header { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.2rem; background: var(--primary-black); color: var(--gold); flex-shrink: 0; border-bottom: 2px solid var(--gold); }
+        .sidebar-header h3 { font-size: 1rem; font-family: var(--font-serif); display: flex; align-items: center; gap: 0.5rem; margin: 0; }
+        .sidebar-close { background: rgba(255,255,255,0.08); border: none; font-size: 1.1rem; color: var(--gold); cursor: pointer; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: var(--transition); }
+        .sidebar-close:hover { background: var(--gold); color: var(--primary-black); }
+        .sidebar-search { padding: 0.8rem 1.2rem; border-bottom: 1px solid var(--gray-light); flex-shrink: 0; }
+        .sidebar-search .search-form { border: 1px solid var(--gray-light); display: flex; border-radius: var(--border-radius-full); overflow: hidden; width: 100%; }
+        .sidebar-search .search-input { flex: 1; padding: 0.5rem 0.8rem; border: none; outline: none; font-size: 0.8rem; background: transparent; }
+        .sidebar-search .search-btn { background: var(--gold-gradient); border: none; padding: 0.5rem 0.8rem; cursor: pointer; color: var(--primary-black); font-size: 0.85rem; }
+        .sidebar-nav-scroll { flex: 1; overflow-y: auto; padding: 0.3rem 0; }
+        .sidebar-nav { list-style: none; }
+        .sidebar-nav-item { border-bottom: 1px solid var(--gray-light); }
+        .sidebar-nav-link { display: flex; align-items: center; justify-content: space-between; padding: 0.7rem 1.2rem; color: var(--text-dark); text-decoration: none; transition: var(--transition); font-weight: 500; cursor: pointer; font-size: 0.85rem; width: 100%; }
+        .sidebar-nav-link span { display: flex; align-items: center; gap: 0.7rem; flex: 1; }
+        .sidebar-nav-link span i { width: 24px; color: var(--gold-dark); font-size: 0.95rem; }
+        .sidebar-footer { padding: 0.8rem 1.2rem; border-top: 1px solid var(--gray-light); background: var(--white-off); flex-shrink: 0; }
+        .sidebar-auth-btn { width: 100%; display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.6rem; border-radius: var(--border-radius); background: var(--primary-black); color: var(--gold); border: none; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: var(--transition); margin-bottom: 0.6rem; }
+        .sidebar-auth-btn:hover { background: var(--gold); color: var(--primary-black); }
+        .sidebar-contact { margin-top: 0.5rem; }
+        .sidebar-contact-item { display: flex; align-items: center; gap: 0.6rem; padding: 0.3rem 0; color: var(--text-gray); font-size: 0.75rem; }
+        .sidebar-contact-item i { color: var(--gold-dark); width: 18px; }
+        .sidebar-social { display: flex; gap: 8px; margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--gray-light); flex-wrap: wrap; }
+        .sidebar-social-link { width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--gray-light); display: flex; align-items: center; justify-content: center; color: var(--gold-dark); text-decoration: none; transition: var(--transition); font-size: 0.85rem; }
+        .sidebar-social-link:hover { background: var(--primary-black); border-color: var(--primary-black); color: var(--gold); }
+        .sidebar-social-link.facebook-social:hover { background: var(--facebook-color); color: white; border-color: var(--facebook-color); }
+        .sidebar-social-link.instagram-social:hover { background: var(--instagram-color); color: white; border-color: var(--instagram-color); }
+        .sidebar-social-link.whatsapp-social:hover { background: var(--whatsapp-color); color: white; border-color: var(--whatsapp-color); }
+        .sidebar-social-link.tiktok-social:hover { background: var(--tiktok-color); color: white; border-color: var(--tiktok-color); }
+        .sidebar-social-link.youtube-social:hover { background: var(--youtube-color); color: white; border-color: var(--youtube-color); }
+        .hamburger { display: none; flex-direction: column; gap: 4px; cursor: pointer; padding: 8px; background: none; border: none; z-index: 2001; }
+        .hamburger span { display: block; width: 24px; height: 2.5px; background: var(--white); border-radius: 2px; transition: var(--transition); transform-origin: center; }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+        .main-nav { flex: 1; display: flex; justify-content: flex-start; }
+
+        /* ========== STORE HERO ========== */
+        .store-hero { background: linear-gradient(135deg, var(--primary-black) 0%, var(--dark-gray) 100%); padding: 3rem 0; margin-bottom: 2rem; border-bottom: 2px solid var(--gold); }
+        .hero-content { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+        .hero-text h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; line-height: 1.2; margin-bottom: 1rem; color: var(--white); font-family: var(--font-serif); }
+        .hero-text h1 span { color: var(--gold); }
+        .hero-text p { font-size: 1rem; color: var(--gray-light); margin-bottom: 2rem; }
+        .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background: var(--gold-gradient); color: var(--primary-black); text-decoration: none; border-radius: var(--border-radius-full); font-weight: 700; transition: var(--transition); border: none; cursor: pointer; font-size: 0.875rem; }
+        .btn-outline { background: transparent; border: 2px solid var(--gold); color: var(--gold); }
+        .btn-outline:hover { background: var(--gold-gradient); color: var(--primary-black); }
+        .btn-whatsapp { background: #25D366; color: white; }
+        .btn-whatsapp:hover { background: #128C7E; }
+        .btn:hover { transform: translateY(-2px); box-shadow: var(--gold-shadow); }
+        .hero-image img { width: 100%; border-radius: var(--border-radius-lg); box-shadow: var(--shadow-lg); border: 3px solid var(--gold); cursor: pointer; transition: var(--transition); }
+        .hero-image img:hover { transform: scale(1.02); }
+
+        /* ========== CATEGORIES ========== */
+        .category-section { padding: 2rem 0; }
+        .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem; }
+        .section-title { font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 700; font-family: var(--font-serif); position: relative; padding-bottom: 0.5rem; }
+        .section-title::after { content: ''; position: absolute; bottom: 0; left: 0; width: 60px; height: 3px; background: var(--gold-gradient); }
+        .category-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+        .category-card { background: var(--white); border-radius: var(--border-radius-lg); padding: 1.5rem; text-align: center; text-decoration: none; color: var(--text-dark); transition: var(--transition); border: 1px solid var(--gray-light); cursor: pointer; }
+        .category-card:hover { transform: translateY(-5px); box-shadow: var(--gold-shadow); border-color: var(--gold); }
+        .category-icon { width: 70px; height: 70px; background: var(--gold-gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; }
+        .category-icon i { font-size: 2rem; color: var(--primary-black); }
+        .category-card h3 { font-size: 1rem; font-weight: 700; }
+        .category-card p { font-size: 0.75rem; color: var(--gray-medium); }
+
+        /* ========== PRODUCTS ========== */
+        .products-section { padding: 2rem 0; background: var(--white-off); }
+        .filter-buttons { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2rem; }
+        .filter-btn { padding: 0.4rem 1.2rem; background: var(--white); border: 1px solid var(--gray-light); border-radius: var(--border-radius-full); font-size: 0.813rem; cursor: pointer; transition: var(--transition); }
+        .filter-btn.active, .filter-btn:hover { background: var(--gold-gradient); border-color: var(--gold); color: var(--primary-black); }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+        .product-card { background: var(--white); border-radius: var(--border-radius-lg); overflow: hidden; transition: var(--transition); border: 1px solid var(--gray-light); }
+        .product-card:hover { transform: translateY(-5px); box-shadow: var(--gold-shadow); border-color: var(--gold); }
+        .product-image { position: relative; height: 220px; overflow: hidden; background: var(--white-off); cursor: pointer; }
+        .product-image img { width: 100%; height: 100%; object-fit: contain; padding: 1rem; transition: transform 0.5s ease; }
+        .product-card:hover .product-image img { transform: scale(1.05); }
+        .product-badge { position: absolute; top: 10px; left: 10px; background: var(--gold-gradient); padding: 0.25rem 0.75rem; border-radius: var(--border-radius-full); font-size: 0.688rem; font-weight: 700; z-index: 2; }
+        .product-actions-on-image {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            opacity: 0;
+            transform: translateX(15px);
+            transition: var(--transition);
+            z-index: 2;
+        }
+        .product-card:hover .product-actions-on-image { opacity: 1; transform: translateX(0); }
+        .product-action-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 2px solid var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--gold-dark);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        .product-action-btn:hover { background: var(--gold-gradient); color: var(--primary-black); border-color: var(--gold); transform: scale(1.1); }
+        .product-action-btn.whatsapp-order { border-color: var(--whatsapp-color); color: var(--whatsapp-color); }
+        .product-action-btn.whatsapp-order:hover { background: var(--whatsapp-color); color: var(--white); border-color: var(--whatsapp-color); }
+        .product-info { padding: 1rem; }
+        .product-name { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .product-price { font-size: 1.25rem; font-weight: 700; color: var(--gold-dark); margin-bottom: 0.75rem; }
+        .old-price { font-size: 0.813rem; color: var(--gray-medium); text-decoration: line-through; margin-left: 0.5rem; font-weight: normal; }
+        .product-specs { font-size: 0.7rem; color: var(--gray-medium); margin-bottom: 0.5rem; }
+        .product-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+        .product-actions .btn { flex: 1; padding: 0.5rem; font-size: 0.75rem; justify-content: center; }
+        .clear-search { background: none; border: 1px solid var(--gray-light); padding: 0.3rem 0.8rem; border-radius: var(--border-radius-full); font-size: 0.75rem; cursor: pointer; transition: var(--transition); }
+        .clear-search:hover { background: var(--gold); border-color: var(--gold); color: var(--primary-black); }
+
+        /* ========== PROMO BANNER ========== */
+        .promo-banner { background: linear-gradient(135deg, var(--primary-black) 0%, var(--dark-gray) 100%); padding: 3rem 0; margin: 2rem 0; border-top: 2px solid var(--gold); border-bottom: 2px solid var(--gold); }
+        .promo-content { text-align: center; color: var(--white); }
+        .promo-content h2 { font-size: clamp(1.5rem, 4vw, 2rem); font-family: var(--font-serif); margin-bottom: 1rem; }
+        .promo-content h2 span { color: var(--gold); }
+        .promo-content p { margin-bottom: 1.5rem; opacity: 0.9; }
+
+        /* ========== FEATURES ========== */
+        .features-section { padding: 3rem 0; }
+        .features-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.5rem; }
+        .feature-card { text-align: center; padding: 1.5rem; background: var(--white); border-radius: var(--border-radius-lg); border: 1px solid var(--gray-light); transition: var(--transition); }
+        .feature-card:hover { transform: translateY(-3px); box-shadow: var(--gold-shadow); border-color: var(--gold); }
+        .feature-icon { width: 60px; height: 60px; background: var(--gold-gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; }
+        .feature-icon i { font-size: 1.5rem; color: var(--primary-black); }
+        .feature-card h4 { font-size: 0.875rem; font-weight: 700; }
+        .feature-card p { font-size: 0.688rem; color: var(--gray-medium); }
+
+        /* ========== NEWSLETTER ========== */
+        .newsletter-section { background: var(--white-off); padding: 2rem 0; }
+        .newsletter-wrapper { display: flex; justify-content: space-between; align-items: center; gap: 2rem; flex-wrap: wrap; }
+        .newsletter-content { display: flex; align-items: center; gap: 1rem; }
+        .newsletter-icon { width: 50px; height: 50px; background: var(--gold-gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .newsletter-icon i { font-size: 1.25rem; color: var(--primary-black); }
+        .newsletter-text h3 { font-size: 1.1rem; font-weight: 700; }
+        .newsletter-text p { font-size: 0.813rem; color: var(--text-gray); }
+        .newsletter-form { display: flex; gap: 0.5rem; min-width: 350px; }
+        .newsletter-input { flex: 1; padding: 0.7rem 1rem; border: 1px solid var(--gray-light); border-radius: var(--border-radius-full); font-size: 0.813rem; outline: none; }
+        .newsletter-input:focus { border-color: var(--gold); box-shadow: var(--gold-shadow); }
+        .newsletter-btn { padding: 0.7rem 1.5rem; background: var(--gold-gradient); border: none; border-radius: var(--border-radius-full); font-weight: 600; cursor: pointer; }
+
+        /* ========== FOOTER ========== */
+        .footer { background: var(--primary-black); color: var(--white); padding: 2.5rem 0 0; margin-top: auto; border-top: 3px solid var(--gold); }
+        .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(212, 175, 55, 0.15); }
+        .footer-about p { color: var(--gray-light); margin: 0.8rem 0; font-size: 0.85rem; line-height: 1.7; }
+        .footer-logo { margin-bottom: 0.8rem; }
+        .footer-logo img { height: 45px; width: auto; max-width: 100%; }
+        .footer-title {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 0.4rem;
+            color: var(--gold);
+            font-family: var(--font-serif);
+        }
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 35px;
+            height: 2px;
+            background: var(--gold-gradient);
+        }
+        .footer-links { list-style: none; }
+        .footer-link { margin-bottom: 0.5rem; }
+        .footer-link a {
+            color: var(--gray-light);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .footer-link a:hover { color: var(--gold); transform: translateX(4px); }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 0.5rem;
+            color: var(--gray-light);
+            font-size: 0.85rem;
+        }
+        .contact-item i { color: var(--gold); width: 18px; }
+        .social-links { display: flex; gap: 0.6rem; margin-top: 1.2rem; flex-wrap: wrap; }
+        .social-link {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+        .social-link.facebook-footer { color: var(--facebook-color); }
+        .social-link.instagram-footer { color: var(--instagram-color); }
+        .social-link.whatsapp-footer { color: var(--whatsapp-color); }
+        .social-link.tiktok-footer { color: var(--tiktok-color); }
+        .social-link.youtube-footer { color: var(--youtube-color); }
+        .social-link:hover {
+            transform: translateY(-3px) scale(1.08);
+            background: rgba(255,255,255,0.1);
+            filter: brightness(1.2);
+        }
+        .footer-bottom { padding: 1.2rem 0; }
+        .footer-bottom .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.8rem; }
+        .copyright { font-size: 0.8rem; color: var(--gray-light); }
+        .copyright a { color: var(--gold); text-decoration: none; }
+        .payment-methods { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
+        .payment-methods img { height: 30px; width: auto; background: var(--white); padding: 0.15rem 0.4rem; border-radius: var(--border-radius); transition: var(--transition); max-width: 55px; object-fit: contain; }
+        .payment-methods img:hover { transform: scale(1.05); }
+
+        /* ========== FLOATING BUTTONS ========== */
+        .floating-buttons { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 0.5rem; z-index: 998; }
+        .whatsapp-btn { width: 52px; height: 52px; border-radius: 50%; background: var(--whatsapp-color); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.35); transition: var(--transition); }
+        .whatsapp-btn:hover { transform: scale(1.08); background: #128C7E; }
+        .whatsapp-btn img { width: 28px; height: 28px; }
+        .back-to-top { width: 52px; height: 52px; border-radius: 50%; background: var(--gold-gradient); display: flex; align-items: center; justify-content: center; text-decoration: none; color: var(--primary-black); font-size: 1.2rem; cursor: pointer; opacity: 0; visibility: hidden; transition: var(--transition); box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3); }
+        .back-to-top.visible { opacity: 1; visibility: visible; }
+        .back-to-top:hover { transform: translateY(-3px); }
+
+        /* ========== LIGHTBOX ========== */
+        .lightbox-modal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.95); z-index: 5000;
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; visibility: hidden; transition: var(--transition);
+        }
+        .lightbox-modal.active { opacity: 1; visibility: visible; }
+        .lightbox-content { max-width: 90vw; max-height: 90vh; position: relative; display: flex; flex-direction: column; align-items: center; }
+        .lightbox-image { max-width: 90vw; max-height: 80vh; object-fit: contain; border-radius: var(--border-radius-lg); border: 3px solid var(--gold); box-shadow: 0 0 30px rgba(212,175,55,0.3); }
+        .lightbox-close {
+            position: absolute; top: -45px; right: 0; background: var(--gold-gradient); border: none;
+            width: 40px; height: 40px; border-radius: 50%; font-size: 1.2rem; cursor: pointer;
+            color: var(--primary-black); transition: var(--transition);
+        }
+        .lightbox-close:hover { transform: scale(1.1) rotate(90deg); }
+
+        /* ========== VARIANT MODAL ========== */
+        .variant-modal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.85); z-index: 5001;
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; visibility: hidden; transition: var(--transition);
+        }
+        .variant-modal.active { opacity: 1; visibility: visible; }
+        .variant-modal-content {
+            background: var(--white); border-radius: var(--border-radius-lg);
+            max-width: 1000px; width: 90%; max-height: 85vh; overflow-y: auto;
+            position: relative; padding: 2rem;
+            animation: modalFadeIn 0.3s ease;
+        }
+        @keyframes modalFadeIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .variant-modal-close {
+            position: absolute; top: 1rem; right: 1rem;
+            background: var(--gold-gradient); border: none;
+            width: 38px; height: 38px; border-radius: 50%; cursor: pointer;
+            transition: var(--transition);
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .variant-modal-close:hover { transform: rotate(90deg); background: var(--gold-dark); color: white; }
+        .variant-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem; margin-top: 1.5rem;
+        }
+        .variant-card {
+            background: var(--white-off); border-radius: var(--border-radius);
+            padding: 1rem; text-align: center; cursor: pointer;
+            transition: var(--transition); border: 1px solid var(--gray-light);
+        }
+        .variant-card:hover { transform: translateY(-5px); border-color: var(--gold); box-shadow: var(--gold-shadow); }
+        .variant-card img { width: 100%; height: 160px; object-fit: contain; border-radius: var(--border-radius); cursor: pointer; }
+        .variant-card h4 { font-size: 0.9rem; margin: 0.5rem 0; }
+        .variant-card .price { color: var(--gold-dark); font-weight: 700; font-size: 1.1rem; }
+
+        /* ========== NOTIFICATION ========== */
+        .notification-container { position: fixed; top: 20px; right: 20px; z-index: 10000; display: flex; flex-direction: column; gap: 0.5rem; max-width: 92%; }
+        .notification { background: var(--white); padding: 0.8rem 1.2rem; border-radius: var(--border-radius); box-shadow: 0 8px 25px rgba(0,0,0,0.12); display: flex; align-items: center; gap: 0.6rem; transform: translateX(400px); transition: transform 0.3s ease; max-width: 360px; border-left: 4px solid; font-weight: 500; font-size: 0.9rem; }
+        .notification.show { transform: translateX(0); }
+        .notification-success { border-left-color: var(--success); }
+        .notification-error { border-left-color: var(--danger); }
+        .notification i { font-size: 1.1rem; }
+        .notification-success i { color: var(--success); }
+        .notification-error i { color: var(--danger); }
+        .notification button { background: none; border: none; cursor: pointer; padding: 0 0 0 0.5rem; font-size: 0.9rem; color: var(--gray-medium); }
+        .notification button:hover { color: var(--text-dark); }
+
+        /* ========== MODAL AUTH ========== */
+        .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); display: flex; align-items: center; justify-content: center; z-index: 3002; opacity: 0; visibility: hidden; transition: var(--transition); backdrop-filter: blur(3px); }
+        .modal.active { opacity: 1; visibility: visible; }
+        .modal-content { background: var(--white); border-radius: var(--border-radius-lg); padding: 2rem; max-width: 420px; width: 92%; position: relative; transform: scale(0.96); transition: var(--transition); box-shadow: 0 20px 60px rgba(0,0,0,0.4); max-height: 90vh; overflow-y: auto; }
+        .modal.active .modal-content { transform: scale(1); }
+        .modal-close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.2rem; cursor: pointer; color: var(--gray-medium); transition: var(--transition); }
+        .modal-close:hover { color: var(--primary-black); transform: rotate(90deg); }
+        .modal-header { text-align: center; margin-bottom: 1.2rem; }
+        .modal-header h2 { font-size: 1.6rem; color: var(--gold-dark); font-family: var(--font-serif); margin-bottom: 0.3rem; }
+        .modal-header p { color: var(--text-gray); font-size: 0.85rem; }
+        .auth-tabs { display: flex; gap: 0.8rem; margin: 1.2rem 0; border-bottom: 2px solid var(--gray-light); flex-wrap: wrap; }
+        .auth-tab { flex: 1; padding: 0.6rem; background: none; border: none; font-weight: 700; cursor: pointer; border-bottom: 3px solid transparent; font-size: 0.9rem; transition: var(--transition); color: var(--text-gray); min-width: 70px; }
+        .auth-tab.active { color: var(--gold-dark); border-bottom-color: var(--gold); }
+        .auth-tab:hover { color: var(--gold-dark); }
+        .auth-form { display: none; }
+        .auth-form.active { display: block; }
+        .form-group { margin-bottom: 1rem; }
+        .form-group label { display: block; margin-bottom: 0.2rem; font-weight: 600; font-size: 0.8rem; color: var(--text-dark); }
+        .form-group input { width: 100%; padding: 0.7rem 1rem; border: 2px solid var(--gray-light); border-radius: var(--border-radius); font-size: 0.9rem; transition: var(--transition); }
+        .form-group input:focus { outline: none; border-color: var(--gold); box-shadow: var(--gold-shadow); }
+        .auth-submit { width: 100%; padding: 0.8rem; background: var(--gold-gradient); border: none; border-radius: var(--border-radius); font-weight: 700; cursor: pointer; font-size: 0.95rem; margin-top: 0.5rem; transition: var(--transition); box-shadow: 0 4px 15px rgba(212, 175, 55, 0.25); color: var(--primary-black); }
+        .auth-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(212, 175, 55, 0.35); }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 992px) {
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+            .category-grid { grid-template-columns: repeat(2, 1fr); }
+            .features-grid { grid-template-columns: repeat(3, 1fr); }
+            .menu-rectangles { width: 100%; justify-content: space-between; margin-top: 0.3rem; }
+            .large-rectangle { min-width: auto; flex: 1; }
+            .small-rectangle { min-width: auto; }
+            .hero-content { grid-template-columns: 1fr; text-align: center; }
+            .hero-buttons { justify-content: center; }
+        }
+        @media (max-width: 860px) {
+            .hamburger { display: flex; }
+            .main-nav { display: none; }
+            .header-main .container { flex-direction: column; align-items: stretch; gap: 0.5rem; }
+            .header-main .container .logo { order: 1; align-self: flex-start; }
+            .header-main .container .header-actions { order: 2; align-self: flex-end; margin-top: -46px; }
+            .header-main .container .search-wrapper { order: 3; max-width: 100%; width: 100%; margin: 0; }
+            .search-btn span { display: none; }
+            .search-btn { padding: 0.5rem 1rem; }
+            .products-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+            .newsletter-wrapper { flex-direction: column; text-align: center; }
+            .newsletter-content { flex-direction: column; }
+            .newsletter-form { min-width: 100%; flex-direction: column; }
+            .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; text-align: center; }
+            .footer-title::after { left: 50%; transform: translateX(-50%); }
+            .footer-links { text-align: center; }
+            .footer-link a { justify-content: center; }
+            .contact-item { justify-content: center; }
+            .social-links { justify-content: center; }
+            .footer-bottom .container { flex-direction: column; text-align: center; }
+            .payment-methods { justify-content: center; }
+            .header-actions { gap: 0.4rem; }
+            .action-btn { width: 36px; height: 36px; font-size: 0.95rem; }
+            .header-top .container { flex-direction: column; text-align: center; }
+            .customer-service { justify-content: center; flex-wrap: wrap; }
+            .mobile-sidebar { max-width: 100%; width: 100%; }
+            .menu-rectangles { flex-direction: column; }
+            .small-rectangle, .large-rectangle { width: 100%; }
+            .social-icons-row { justify-content: center; }
+            .services-sidebar { max-width: 100%; }
+            .nav-wrapper { top: 0; }
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 480px) {
+            .header-main .container { padding: 0.3rem 0.75rem; }
+            .header-main .container .header-actions { margin-top: -40px; }
+            .products-grid { grid-template-columns: 1fr 1fr; gap: 0.7rem; }
+            .category-grid { grid-template-columns: 1fr; }
+            .features-grid { grid-template-columns: 1fr; }
+            .logo img { height: 36px; }
+            .banner-item { font-size: 0.6rem; padding: 0 0.6rem; }
+            .header-actions { gap: 0.3rem; }
+            .action-btn { width: 34px; height: 34px; font-size: 0.85rem; }
+            .modal-content { padding: 1.5rem; }
+            .auth-tabs { gap: 0.4rem; }
+            .auth-tab { font-size: 0.75rem; padding: 0.5rem; min-width: 55px; }
+            .hero-image { margin-top: 1rem; }
+        }
+        @media (max-width: 360px) {
+            .products-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- ========== HEADER TOP ========== -->
+    <div class="header-top">
+        <div class="container">
+            <div class="scrolling-banner">
+                <div class="scrolling-content">
+                    <span class="banner-item"><i class="fas fa-truck"></i> Livraison gratuite dès <strong>5000 Fcfa</strong></span>
+                    <span class="banner-item"><i class="fas fa-percent"></i> <strong>-30%</strong> sur Paname Wedding</span>
+                    <span class="banner-item"><i class="fas fa-shield-alt"></i> Paiement <strong>100% sécurisé</strong></span>
+                    <span class="banner-item"><i class="fas fa-clock"></i> Livraison <strong>24h-48h</strong> à Yaoundé</span>
+                    <span class="banner-item"><i class="fas fa-gift"></i> Cadeau surprise dès <strong>10000 Fcfa</strong></span>
+                    <span class="banner-item"><i class="fas fa-truck"></i> Livraison gratuite dès <strong>5000 Fcfa</strong></span>
+                    <span class="banner-item"><i class="fas fa-percent"></i> <strong>-30%</strong> sur Paname Wedding</span>
+                    <span class="banner-item"><i class="fas fa-shield-alt"></i> Paiement <strong>100% sécurisé</strong></span>
+                    <span class="banner-item"><i class="fas fa-clock"></i> Livraison <strong>24h-48h</strong> à Yaoundé</span>
+                    <span class="banner-item"><i class="fas fa-gift"></i> Cadeau surprise dès <strong>10000 Fcfa</strong></span>
+                </div>
+            </div>
+            <div class="customer-service">
+                <div><i class="fas fa-phone"></i> <a href="tel:+237657715482">+237 657 71 54 82</a></div>
+                <div><i class="fas fa-envelope"></i> <a href="mailto:lepanameservice@gmail.com">lepanameservice@gmail.com</a></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== HEADER MAIN ========== -->
+    <div class="header-main">
+        <div class="container">
+            <div class="logo">
+                <a href="/index.html"><img src="assets/logoPANSERV.png" alt="Le Paname Service"></a>
+                <span class="admin-badge-header" id="adminBadge"><i class="fas fa-shield-alt"></i> ADMIN</span>
+            </div>
+            <div class="search-wrapper">
+                <form class="search-form" id="desktopSearchForm">
+                    <input type="search" class="search-input" placeholder="Rechercher un produit..." id="desktopSearchInput">
+                    <button type="submit" class="search-btn"><i class="fas fa-search"></i><span>Rechercher</span></button>
+                </form>
+            </div>
+            <div class="header-actions">
+                <button class="action-btn" id="adminDashboardBtn" style="display: none;"><i class="fas fa-chart-line"></i></button>
+                <button class="action-btn" id="adminLogoutBtn" style="display: none;"><i class="fas fa-sign-out-alt"></i></button>
+                <button class="action-btn" data-modal="auth"><i class="far fa-user"></i></button>
+                <a href="/pages/wishlist.html" class="action-btn"><i class="far fa-heart"></i><span class="wishlist-badge">0</span></a>
+                <a href="/pages/cart.html" class="action-btn"><i class="fas fa-shopping-bag"></i><span class="cart-badge">0</span></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== MENU PRINCIPAL ========== -->
+    <div class="nav-wrapper">
+        <div class="container nav-container">
+            <button class="hamburger" id="hamburgerBtn"><span></span><span></span><span></span></button>
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li class="nav-item"><a href="/index.html" class="nav-link">Accueil</a></li>
+                    <li class="nav-item"><a href="/pages/panamestore.html" class="nav-link active">Paname Store</a></li>
+                    <li class="nav-item"><a href="/pages/panamemarket.html" class="nav-link">Paname Market</a></li>
+                    <li class="nav-item"><a href="/services/panamewedding.html" class="nav-link">Paname Wedding</a></li>
+                    <li class="nav-item"><a href="/services/panameevent.html" class="nav-link">Paname Event</a></li>
+                    <li class="nav-item"><a href="/services/panameproduction.html" class="nav-link">Paname Production</a></li>
+                    <li class="nav-item"><a href="/services/panamehouse.html" class="nav-link">Paname House</a></li>
+                    <li class="nav-item"><a href="/services/panametravel.html" class="nav-link">Paname Travel</a></li>
+                    <li class="nav-item"><a href="/services/livraisonexpress.html" class="nav-link">Livraison Express</a></li>
+                    <li class="nav-item"><a href="/services/panamesecurity.html" class="nav-link">Paname Security</a></li>
+                    <li class="nav-item"><a href="/services/panameluxury.html" class="nav-link">Paname Luxury</a></li>
+                    <li class="nav-item"><a href="/pages/sante.html" class="nav-link">Santé</a></li>
+                    <li class="nav-item"><a href="/pages/auto_moto.html" class="nav-link">Auto-Moto</a></li>
+                    <li class="nav-item"><a href="/pages/montres-bijoux.html" class="nav-link">Montres & Bijoux</a></li>
+                    <li class="nav-item"><a href="/pages/contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="menu-rectangles">
+                <div class="large-rectangle">
+                    <div class="social-icons-row">
+                        <a href="https://www.facebook.com/profile.php?id=61557575415489" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/lepanameservice237" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/+237657715482" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.tiktok.com/@lepanameservice237" target="_blank" class="tiktok"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.youtube.com/@LePanameEvent" target="_blank" class="youtube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="small-rectangle" id="openServicesSidebar">
+                    <div class="rectangle-header">
+                        <span><i class="fas fa-concierge-bell"></i> Services</span>
+                        <div class="hamburger-mini">
+                            <span></span><span></span><span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== SERVICES SIDEBAR ========== -->
+    <div class="services-sidebar-overlay" id="servicesSidebarOverlay"></div>
+    <div class="services-sidebar" id="servicesSidebar">
+        <div class="services-sidebar-header">
+            <h3><i class="fas fa-crown"></i> Le Paname Service</h3>
+            <button class="close-sidebar-btn" id="closeServicesSidebar"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="services-sidebar-content">
+            <div class="service-category-sidebar">
+                <h4><i class="fas fa-store"></i> E-commerce</h4>
+                <ul>
+                    <li><a href="/index.html"><i class="fas fa-chevron-right"></i> Accueil</a></li>
+                    <li><a href="/pages/panamestore.html"><i class="fas fa-chevron-right"></i> Paname Store</a></li>
+                    <li><a href="/pages/panamemarket.html"><i class="fas fa-chevron-right"></i> Paname Market</a></li>
+                    <li><a href="/pages/sante.html"><i class="fas fa-chevron-right"></i> Santé</a></li>
+                    <li><a href="/pages/auto_moto.html"><i class="fas fa-chevron-right"></i> Auto-Moto</a></li>
+                    <li><a href="/pages/montres-bijoux.html"><i class="fas fa-chevron-right"></i> Montres & Bijoux</a></li>
+                </ul>
+            </div>
+            <div class="service-category-sidebar">
+                <h4><i class="fas fa-ring"></i> Événementiel</h4>
+                <ul>
+                    <li><a href="/services/panamewedding.html"><i class="fas fa-chevron-right"></i> Paname Wedding</a></li>
+                    <li><a href="/services/panameevent.html"><i class="fas fa-chevron-right"></i> Paname Event</a></li>
+                    <li><a href="/services/panameproduction.html"><i class="fas fa-chevron-right"></i> Paname Production</a></li>
+                </ul>
+            </div>
+            <div class="service-category-sidebar">
+                <h4><i class="fas fa-home"></i> Habitat & Voyage</h4>
+                <ul>
+                    <li><a href="/services/panamehouse.html"><i class="fas fa-chevron-right"></i> Paname House</a></li>
+                    <li><a href="/services/panametravel.html"><i class="fas fa-chevron-right"></i> Paname Travel</a></li>
+                    <li><a href="/services/livraisonexpress.html"><i class="fas fa-chevron-right"></i> Livraison Express</a></li>
+                </ul>
+            </div>
+            <div class="service-category-sidebar">
+                <h4><i class="fas fa-shield-alt"></i> Sécurité & Luxe</h4>
+                <ul>
+                    <li><a href="/services/panamesecurity.html"><i class="fas fa-chevron-right"></i> Paname Security</a></li>
+                    <li><a href="/services/panameluxury.html"><i class="fas fa-chevron-right"></i> Paname Luxury</a></li>
+                </ul>
+            </div>
+            <div class="service-category-sidebar">
+                <h4><i class="fas fa-headset"></i> Support</h4>
+                <ul>
+                    <li><a href="/pages/contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="services-sidebar-footer">
+            <p><i class="fas fa-clock"></i> Disponible 24h/24 et 7j/7</p>
+            <div class="contact-info">
+                <a href="tel:+237657715482"><i class="fas fa-phone"></i> +237 657 71 54 82</a>
+                <a href="mailto:lepanameservice@gmail.com"><i class="fas fa-envelope"></i> lepanameservice@gmail.com</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== MOBILE SIDEBAR ========== -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+    <div class="mobile-sidebar" id="mobileSidebar">
+        <div class="sidebar-header">
+            <h3><i class="fas fa-crown"></i> Le Paname Service</h3>
+            <button class="sidebar-close" id="sidebarCloseBtn"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="sidebar-search">
+            <form class="search-form" id="mobileSearchForm">
+                <input type="search" class="search-input" placeholder="Rechercher un produit..." id="mobileSearchInput">
+                <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
+            </form>
+        </div>
+        <div class="sidebar-nav-scroll">
+            <ul class="sidebar-nav">
+                <li class="sidebar-nav-item"><a href="../index.html" class="sidebar-nav-link"><span><i class="fas fa-home"></i> Accueil</span></a></li>
+                <li class="sidebar-nav-item"><a href="/pages/panamestore.html" class="sidebar-nav-link"><span><i class="fas fa-laptop"></i> Paname Store</span></a></li>
+                <li class="sidebar-nav-item"><a href="/pages/panamemarket.html" class="sidebar-nav-link"><span><i class="fas fa-shopping-cart"></i> Paname Market</span></a></li>
+                <li class="sidebar-nav-item"><a href="/services/panamewedding.html" class="sidebar-nav-link"><span><i class="fas fa-ring"></i> Paname Wedding</span></a></li>
+                <li class="sidebar-nav-item"><a href="/services/panameevent.html" class="sidebar-nav-link"><span><i class="fas fa-calendar-alt"></i> Paname Event</span></a></li>
+                <li class="sidebar-nav-item"><a href="/services/panameproduction.html" class="sidebar-nav-link"><span><i class="fas fa-video"></i> Paname Production</span></a></li>
+                <li class="sidebar-nav-item"><a href="/services/panamehouse.html" class="sidebar-nav-link"><span><i class="fas fa-home"></i> Paname House</span></a></li>
+                <li class="sidebar-nav-item"><a href="/services/panametravel.html" class="sidebar-nav-link"><span><i class="fas fa-plane"></i> Paname Travel</span></a></li>
+                <li class="sidebar-nav-item"><a href="/services/livraisonexpress.html" class="sidebar-nav-link"><span><i class="fas fa-truck"></i> Livraison Express</span></a></li>
+                <li class="sidebar-nav-item"><a href="/services/panamesecurity.html" class="sidebar-nav-link"><span><i class="fas fa-shield-alt"></i> Paname Security</span></a></li>
+                <li class="sidebar-nav-item"><a href="/services/panameluxury.html" class="sidebar-nav-link"><span><i class="fas fa-gem"></i> Paname Luxury</span></a></li>
+                <li class="sidebar-nav-item"><a href="/pages/sante.html" class="sidebar-nav-link"><span><i class="fas fa-heartbeat"></i> Santé</span></a></li>
+                <li class="sidebar-nav-item"><a href="/pages/auto_moto.html" class="sidebar-nav-link"><span><i class="fas fa-car"></i> Auto-Moto</span></a></li>
+                <li class="sidebar-nav-item"><a href="/pages/montres-bijoux.html" class="sidebar-nav-link"><span><i class="fas fa-gem"></i> Montres & Bijoux</span></a></li>
+                <li class="sidebar-nav-item"><a href="/pages/contact.html" class="sidebar-nav-link"><span><i class="fas fa-envelope"></i> Contact</span></a></li>
+            </ul>
+        </div>
+        <div class="sidebar-footer">
+            <button class="sidebar-auth-btn" data-modal="auth"><i class="far fa-user"></i><span>Mon compte</span></button>
+            <div class="sidebar-contact">
+                <div class="sidebar-contact-item"><i class="fas fa-phone"></i><span>+237 657 71 54 82</span></div>
+                <div class="sidebar-contact-item"><i class="fas fa-envelope"></i><span>lepanameservice@gmail.com</span></div>
+                <div class="sidebar-contact-item"><i class="fas fa-map-marker-alt"></i><span>Yaoundé, Cameroun</span></div>
+            </div>
+            <div class="sidebar-social">
+                <a href="https://www.facebook.com/profile.php?id=61557575415489" class="sidebar-social-link facebook-social"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/lepanameservice237" class="sidebar-social-link instagram-social"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/+237657715482" class="sidebar-social-link whatsapp-social"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.tiktok.com/@lepanameservice237" class="sidebar-social-link tiktok-social"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.youtube.com/@LePanameEvent" class="sidebar-social-link youtube-social"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== STORE HERO ========== -->
+    <section class="store-hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1><span>Paname Store</span><br>La puissance à votre portée</h1>
+                    <p>Ordinateurs portables, desktops et accessoires high-tech. Performance garantie, assistance locale et meilleur rapport qualité-prix.</p>
+                    <div class="hero-buttons">
+                        <a href="#products" class="btn"><i class="fas fa-laptop"></i> Voir les produits</a>
+                        <a href="https://wa.me/+237657715482" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Commander via WhatsApp</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600" alt="Paname Store" onclick="openLightbox(this.src)" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CATEGORIES ========== -->
+    <section class="category-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Catégories</h2>
+            </div>
+            <div class="category-grid">
+                <div class="category-card" onclick="filterProducts('all')">
+                    <div class="category-icon"><i class="fas fa-laptop"></i></div>
+                    <h3>Tous</h3>
+                    <p>Voir tout</p>
+                </div>
+                <div class="category-card" onclick="filterProducts('accessory')">
+                    <div class="category-icon"><i class="fas fa-microchip"></i></div>
+                    <h3>Accessoires</h3>
+                    <p>High-tech & gadgets</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PRODUCTS SECTION ========== -->
+    <section id="products" class="products-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" id="sectionTitle">Nos Produits</h2>
+                <button class="clear-search" id="clearSearchBtn" style="display: none;">Afficher tous</button>
+            </div>
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick="filterProducts('all')">Tous</button>
+                <button class="filter-btn" onclick="filterProducts('accessory')">Accessoires</button>
+            </div>
+            <div class="products-grid" id="productsGrid"></div>
+        </div>
+    </section>
+
+    <!-- ========== PROMO BANNER ========== -->
+    <section class="promo-banner">
+        <div class="container">
+            <div class="promo-content">
+                <h2>Offre Spéciale <span>-30%</span> sur les Accessoires</h2>
+                <p>Profitez de nos remises exceptionnelles. Stock limité !</p>
+                <a href="#" class="btn" onclick="filterProducts('accessory')"><i class="fas fa-tag"></i> J'en profite</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FEATURES ========== -->
+    <section class="features-section">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-truck"></i></div>
+                    <h4>Livraison Gratuite</h4>
+                    <p>Dès 5000 Fcfa</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h4>Garantie 2 ans</h4>
+                    <p>SAV local</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-money-bill-wave"></i></div>
+                    <h4>Paiement sécurisé</h4>
+                    <p>OM, MTN, PayPal</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-headset"></i></div>
+                    <h4>Support 24/7</h4>
+                    <p>Assistance technique</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-store"></i></div>
+                    <h4>Retrait magasin</h4>
+                    <p>-10% dès 10k</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== NEWSLETTER ========== -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-wrapper">
+                <div class="newsletter-content">
+                    <div class="newsletter-icon"><i class="fas fa-envelope-open-text"></i></div>
+                    <div class="newsletter-text">
+                        <h3>Restez informé</h3>
+                        <p>Recevez nos offres exclusives en avant-première</p>
+                    </div>
+                </div>
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" class="newsletter-input" placeholder="Votre adresse email" required>
+                    <button type="submit" class="newsletter-btn">S'inscrire <i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="footer-logo"><img src="assets/logoPANSERV.png" alt="Le Paname Service"></div>
+                    <p>Le Paname Service - Votre partenaire de confiance pour tous vos besoins en high-tech, sécurité, événementiel, alimentation et bien plus encore.</p>
+                    <div class="contact-item"><a href="https://maps.app.goo.gl/CzziPJ2yLc8sPuuv7"><i class="fas fa-map-marker-alt"></i><span>Yaoundé, Cameroun</span></a></div>
+                </div>
+                <div>
+                    <h4 class="footer-title">E-commerce</h4>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="/index.html"><i class="fas fa-chevron-right"></i> Accueil</a></li>
+                        <li class="footer-link"><a href="/pages/panamestore.html"><i class="fas fa-chevron-right"></i> Paname Store</a></li>
+                        <li class="footer-link"><a href="/pages/panamemarket.html"><i class="fas fa-chevron-right"></i> Paname Market</a></li>
+                        <li class="footer-link"><a href="/pages/sante.html"><i class="fas fa-chevron-right"></i> Santé</a></li>
+                        <li class="footer-link"><a href="/pages/auto_moto.html"><i class="fas fa-chevron-right"></i> Auto-Moto</a></li>
+                        <li class="footer-link"><a href="/pages/montres-bijoux.html"><i class="fas fa-chevron-right"></i> Montres & Bijoux</a></li>
+                        <li class="footer-link"><a href="/pages/contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Nos services</h4>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="/services/panamewedding.html"><i class="fas fa-chevron-right"></i> Paname Wedding</a></li>
+                        <li class="footer-link"><a href="/services/panamehouse.html"><i class="fas fa-chevron-right"></i> Paname House</a></li>
+                        <li class="footer-link"><a href="/services/panametravel.html"><i class="fas fa-chevron-right"></i> Paname Travel</a></li>
+                        <li class="footer-link"><a href="/services/panameevent.html"><i class="fas fa-chevron-right"></i> Paname Event</a></li>
+                        <li class="footer-link"><a href="/services/panameproduction.html"><i class="fas fa-chevron-right"></i> Paname Production</a></li>
+                        <li class="footer-link"><a href="/services/panamesecurity.html"><i class="fas fa-chevron-right"></i> Paname Security</a></li>
+                        <li class="footer-link"><a href="/services/panameluxury.html"><i class="fas fa-chevron-right"></i> Paname Luxury</a></li>
+                        <li class="footer-link"><a href="/services/livraisonexpress.html"><i class="fas fa-chevron-right"></i> Livraison Express</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Contact</h4>
+                    <div class="contact-item"><i class="fas fa-phone"></i><span>+237 657 71 54 82</span></div>
+                    <div class="contact-item"><i class="fas fa-phone"></i><span>+237 676 39 18 16</span></div>
+                    <div class="contact-item"><i class="fas fa-envelope"></i><span>lepanameservice@gmail.com</span></div>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/profile.php?id=61557575415489" class="social-link facebook-footer" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/lepanameservice237" class="social-link instagram-footer" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/+237657715482" class="social-link whatsapp-footer" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.tiktok.com/@lepanameservice237" class="social-link tiktok-footer" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.youtube.com/@LePanameEvent" class="social-link youtube-footer" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="copyright">&copy; 2020 <a href="/index.html">Le Paname Service</a>. Tous droits réservés.</div>
+                    <div class="payment-methods">
+                        <img src="assets/om.jpg" alt="Orange Money" onerror="this.src='https://placehold.co/60x30/FF6600/white?text=OM'">
+                        <img src="assets/momo.jpg" alt="MTN Mobile Money" onerror="this.src='https://placehold.co/60x30/FFCC00/black?text=MTN'">
+                        <img src="assets/paypal.jpg" alt="PayPal" onerror="this.src='https://placehold.co/60x30/003087/white?text=PayPal'">
+                        <img src="assets/image/payment-1.png" alt="Visa" onerror="this.src='https://placehold.co/60x30/1A1F71/white?text=Visa'">
+                        <img src="assets/image/payment-2.png" alt="Mastercard" onerror="this.src='https://placehold.co/60x30/EB001B/white?text=MC'">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== FLOATING BUTTONS ========== -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/+237657715482" class="whatsapp-btn" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"></a>
+        <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></a>
+    </div>
+
+    <!-- ========== LIGHTBOX ========== -->
+    <div class="lightbox-modal" id="lightboxModal">
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="lightboxClose"><i class="fas fa-times"></i></button>
+            <img class="lightbox-image" id="lightboxImage" src="" alt="">
+        </div>
+    </div>
+
+    <!-- ========== VARIANT MODAL ========== -->
+    <div class="variant-modal" id="variantModal">
+        <div class="variant-modal-content">
+            <button class="variant-modal-close" id="variantModalClose"><i class="fas fa-times"></i></button>
+            <h3 style="color: var(--gold-dark);" id="variantModalTitle">Variantes</h3>
+            <div class="variant-grid" id="variantGrid"></div>
+        </div>
+    </div>
+
+    <!-- ========== MODAL AUTH ========== -->
+    <div class="modal" id="authModal">
+        <div class="modal-content">
+            <button class="modal-close" data-modal-close><i class="fas fa-times"></i></button>
+            <div class="modal-header">
+                <h2>Bienvenue</h2>
+                <p>Connectez-vous ou créez un compte</p>
+            </div>
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-tab="login">Connexion</button>
+                <button class="auth-tab" data-tab="register">Inscription</button>
+                <button class="auth-tab" data-tab="admin"><i class="fas fa-shield-alt"></i> Admin</button>
+            </div>
+            <form class="auth-form active" id="loginForm">
+                <div class="form-group"><label>Email</label><input type="email" placeholder="votre@email.com" required></div>
+                <div class="form-group"><label>Mot de passe</label><input type="password" placeholder="••••••••" required></div>
+                <button type="submit" class="auth-submit">Se connecter</button>
+            </form>
+            <form class="auth-form" id="registerForm">
+                <div class="form-group"><label>Nom complet</label><input type="text" required></div>
+                <div class="form-group"><label>Email</label><input type="email" required></div>
+                <div class="form-group"><label>Téléphone</label><input type="tel" required></div>
+                <div class="form-group"><label>Mot de passe</label><input type="password" required></div>
+                <div class="form-group"><label>Confirmer</label><input type="password" required></div>
+                <button type="submit" class="auth-submit">S'inscrire</button>
+            </form>
+            <form class="auth-form" id="adminForm">
+                <div class="form-group"><label>Email admin</label><input type="email" id="adminEmail" placeholder="admin@lepaname.com" required></div>
+                <div class="form-group"><label>Mot de passe</label><input type="password" id="adminPassword" placeholder="••••••••" required></div>
+                <button type="submit" class="auth-submit"><i class="fas fa-sign-in-alt"></i> Se connecter</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ========== NOTIFICATION ========== -->
+    <div class="notification-container" id="notificationContainer"></div>
+
+    <!-- ========== SCRIPTS ========== -->
+    <!-- SWIPER JS (version stable) -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11.0.5/swiper-bundle.min.js">
+    </script>
+
+    <script>
+        // ========== CONFIGURATION ADMIN ==========
+        const ADMIN_CONFIG = {
+            email: 'admin@lepaname.com',
+            password: 'Admin123!',
+            sessionKey: 'paname_admin_session',
+            sessionDuration: 24 * 60 * 60 * 1000
+        };
+
+        function isAdminLoggedIn() {
+            const s = localStorage.getItem(ADMIN_CONFIG.sessionKey);
+            if (!s) return false;
+            try {
+                const d = JSON.parse(s);
+                if (Date.now() > d.expires) {
+                    logoutAdmin();
+                    return false;
+                }
+                return true;
+            } catch (e) { return false; }
+        }
+
+        function loginAdmin(email, password) {
+            if (email === ADMIN_CONFIG.email && password === ADMIN_CONFIG.password) {
+                localStorage.setItem(ADMIN_CONFIG.sessionKey, JSON.stringify({ loggedIn: true, expires: Date.now() + ADMIN_CONFIG.sessionDuration }));
+                return true;
+            }
+            return false;
+        }
+
+        function logoutAdmin() {
+            localStorage.removeItem(ADMIN_CONFIG.sessionKey);
+            updateAdminUI();
+            showNotification('Déconnexion admin', 'success');
+        }
+
+        function updateAdminUI() {
+            const isAdmin = isAdminLoggedIn();
+            const badge = document.getElementById('adminBadge');
+            const dashboardBtn = document.getElementById('adminDashboardBtn');
+            const logoutBtn = document.getElementById('adminLogoutBtn');
+            if (badge) badge.style.display = isAdmin ? 'inline-block' : 'none';
+            if (dashboardBtn) dashboardBtn.style.display = isAdmin ? 'flex' : 'none';
+            if (logoutBtn) logoutBtn.style.display = isAdmin ? 'flex' : 'none';
+        }
+
+        // ========== PRODUITS ==========
+        const productsData = [
+            { id: 'prod-001', name: 'Bâton selfie', category: 'accessory', specs: 'Selfie stick extensible', price: 11500, oldPrice: 18000, image: 'images/baton/1.png', badge: '-36%', family: 'selfie', variants: ['images/baton/1.png','images/baton/2.png','images/baton/3.png'] },
+            { id: 'prod-002', name: 'Diffuseur Cheminée Électrique', category: 'accessory', specs: 'MTC-2000WN', price: 19500, oldPrice: 45000, image: 'images/Diffuseur/1.png', badge: '-57%', family: 'diffuseur', variants: ['images/Diffuseur/1.png','images/Diffuseur/2.png','images/Diffuseur/3.png', 'images/Diffuseur/4.png'] },
+            { id: 'prod-003', name: 'Onduleur 750VA', category: 'accessory', specs: 'Onduleur 750VA', price: 28500, oldPrice: 48000, image: 'images/ONDULEUR/1.png', badge: '-41%', family: 'onduleur', variants: ['images/ONDULEUR/1.png','images/ONDULEUR/2.png'] },
+            { id: 'prod-004', name: 'Fer à repasser électrique à vapeur', category: 'accessory', specs: '220V Fer vapeur', price: 16900, oldPrice: 30000, image: 'images/Machine/1.png', badge: '-44%', family: 'fer', variants: ['images/Machine/1.png','images/Machine/2.png','images/Machine/3.png'] },
+            { id: 'prod-005', name: 'Régulateur de tension numérique 10kVA', category: 'accessory', specs: '10kVA / 10000 watts', price: 195000, oldPrice: 282000, image: 'images/TENSION/1.png', badge: '-31%', family: 'TENSION', variants: ['images/TENSION/1.png','images/TENSION/2.png'] },
+            { id: 'prod-006', name: 'Régulateur de tension numérique 3050VA', category: 'accessory', specs: '3050VA', price: 65000, oldPrice: 90000, image: 'images/REGULATEUR/1.png', badge: '-28%', family: 'REGULATEUR', variants: ['images/REGULATEUR/1.png','images/REGULATEUR/2.png'] },
+            { id: 'prod-007', name: 'Régulateur de tension numérique 5000VA', category: 'accessory', specs: '5000VA', price: 79000, oldPrice: 100000, image: 'images/NUMERIQUE/1.png', badge: '-21%', family: 'NUMERIQUE', variants: ['images/NUMERIQUE/1.png','images/NUMERIQUE/2.png'] },
+            { id: 'prod-008', name: 'Régulateur de tension 1500VA MATECH', category: 'accessory', specs: '1500VA Numérique', price: 24500, oldPrice: 44000, image: 'images/MATECH/1.png', badge: '-44%', family: 'MATECH', variants: ['images/MATECH/1.png','images/MATECH/2.png'] },
+            { id: 'prod-009', name: 'Régulateur de tension numérique 2000VA', category: 'accessory', specs: '2000VA', price: 29500, oldPrice: 85000, image: 'images/DETENSION/1.png', badge: '-65%', family: 'DETENSION', variants: ['images/DETENSION/1.png','images/DETENSION/2.png'] },
+            { id: 'prod-010', name: 'Robot multifonction RAF 4in1 800w', category: 'accessory', specs: 'Robot 4 fonctions', price: 45000, oldPrice: 70000, image: 'images/Robot/1.png', badge: '-36%', family: 'robot', variants: [] },
+            { id: 'prod-011', name: 'Support multifonction', category: 'accessory', specs: 'Support universel', price: 5900, oldPrice: 10000, image: 'images/Support/1.png', badge: '-41%', family: 'support', variants: ['images/Support/1.png','images/Support/2.png','images/Support/3.png','images/Support/4.png'] },
+            { id: 'prod-012', name: 'Support TV Rotatif de 14" à 55" pouces', category: 'accessory', specs: 'Support TV Rotatif ', price: 9500, oldPrice: 20000, image: 'images/Rotatif/1.png', badge: '-41%', family: 'support', variants: ['images/Rotatif/1.png','images/Rotatif/2.png','images/Rotatif/3.png'] },
+            { id: 'prod-013', name: 'Batteur à œufs électrique de table', category: 'accessory', specs: 'Batteur à œufs électrique', price: 38000, oldPrice: 55000, image: 'images/Batteur/1.png', badge: '-41%', family: 'Batteur', variants: ['images/Batteur/1.png','images/Batteur/2.png','images/Batteur/3.png','images/Batteur/4.png'] },
+            { id: 'prod-014', name: 'Electric Massage Gun', category: 'accessory', specs: 'Electric Massage Gun', price: 45000, oldPrice: 85000, image: 'images/Electric/1.png', badge: '-41%', family: 'Electric', variants: ['images/Electric/1.png','images/Electric/2.png','images/Electric/3.png'] },
+            { id: 'prod-015', name: 'GPS TRACKER SINOTRACK', category: 'accessory', specs: 'GPS TRACKER SINOTRACK', price: 35000, oldPrice: 65000, image: 'images/GPS/1.png', badge: '-41%', family: 'GPS', variants: ['images/GPS/1.png','images/GPS/2.png','images/GPS/3.png'] },
+            { id: 'prod-016', name: 'Fer à repasser électrique à vapeur', category: 'accessory', specs: 'Fer à repasser électrique à vapeur', price: 16000, oldPrice: 25000, image: 'images/Machine/1.png', badge: '-41%', family: 'fer', variants: ['images/Machine/1.png','images/Machine/2.png','images/Machine/3.png'] },
+            { id: 'prod-017', name: 'MDSS™ Digital Fetal Doppler', category: 'accessory', specs: 'MDSS™ Digital Fetal Doppler', price: 11900, oldPrice: 20000, image: 'images/Fetal/1.png', badge: '-41%', family: 'Fetal', variants: ['images/Fetal/1.png','images/Fetal/2.png'] },
+            { id: 'prod-018', name: 'Panneau + lampe solaire', category: 'accessory', specs: 'Panneau + lampe solaire', price: 44900, oldPrice: 95000, image: 'images/Panneau/1.png', badge: '-41%', family: 'Panneau', variants: ['images/Panneau/1.png','images/Panneau/2.png','images/Panneau/3.png'] },
+            { id: 'prod-019', name: 'Parafoudre solaire 63A', category: 'accessory', specs: 'Parafoudre solaire 63A', price: 19900, oldPrice: 55000, image: 'images/solaire/1.png', badge: '-41%', family: 'solaire', variants: ['images/solaire/1.png','images/solaire/2.png'] },
+            { id: 'prod-020', name: 'votre pèse bagage', category: 'accessory', specs: 'votre pèse bagage', price: 9000, oldPrice: 15000, image: 'images/bagage/1.png', badge: '-41%', family: 'bagage', variants: ['images/bagage/1.png','images/bagage/2.png'] },
+            { id: 'prod-021', name: 'Sat finder satlink', category: 'accessory', specs: 'Sat finder satlink', price: 35000, oldPrice: 55000, image: 'images/Sat/1.png', badge: '-41%', family: 'Sat', variants: ['images/Sat/1.png','images/Sat/2.png','images/Sat/3.png'] },
+            { id: 'prod-022', name: 'Sokany 3000w Sèche-cheveux', category: 'accessory', specs: 'Sokany 3000w Sèche-cheveux', price: 14000, oldPrice: 35000, image: 'images/Sokany/1.png', badge: '-41%', family: 'Sokany', variants: ['images/Sokany/1.png','images/Sokany/2.png'] },
+            { id: 'prod-023', name: 'Support Mural', category: 'accessory', specs: 'Support Mural', price: 7500, oldPrice: 15000, image: 'images/mural/1.png', badge: '-41%', family: 'mural', variants: [] },
+            { id: 'prod-024', name: 'Caméra analogique colorvu', category: 'accessory', specs: 'Caméra analogique colorvu', price: 19900, oldPrice: 35000, image: 'images/colorvu/1.png', badge: '-41%', family: 'colorvu', variants: ['images/colorvu/1.png','images/colorvu/2.png'] },
+            { id: 'prod-025', name: 'CAMERA SOLAIRE GSM 4G', category: 'accessory', specs: 'CAMERA SOLAIRE GSM 4G', price: 49900, oldPrice: 95000, image: 'images/GSM/1.png', badge: '-41%', family: 'GSM', variants: ['images/GSM/1.png','images/GSM/2.png','images/GSM/3.png'] },
+            { id: 'prod-026', name: 'Contrôleur de charge solaire 60A', category: 'accessory', specs: 'Contrôleur de charge solaire 60A', price: 17800, oldPrice: 45000, image: 'images/charge/1.png', badge: '-41%', family: 'charge', variants: ['images/charge/1.png','images/charge/2.png','images/charge/3.png'] },
+            { id: 'prod-027', name: 'Contrôleur de charge solaire 40A', category: 'accessory', specs: 'Contrôleur de charge solaire 40A', price: 20500, oldPrice: 65000, image: 'images/decharge/1.png', badge: '-41%', family: 'decharge', variants: ['images/decharge/1.png','images/decharge/2.png','images/decharge/3.png'] },
+            { id: 'prod-028', name: 'Contrôleur de charge solaire 30A', category: 'accessory', specs: 'Contrôleur de charge solaire 30A', price: 25900, oldPrice: 75000, image: 'images/chargeso/1.png', badge: '-41%', family: 'chargeso', variants: ['images/chargeso/1.png','images/chargeso/2.png','images/chargeso/3.png'] },
+            { id: 'prod-029', name: 'Modem LTE CPE', category: 'accessory', specs: 'Modem LTE CPE', price: 34900, oldPrice: 65000, image: 'images/Modem/1.png', badge: '-41%', family: 'Modem', variants: ['images/Modem/1.png','images/Modem/2.png','images/Modem/3.png'] },
+            { id: 'prod-030', name: 'Nano station M2', category: 'accessory', specs: 'Nano station M2', price: 99000, oldPrice: 150000, image: 'images/Nano/1.png', badge: '-41%', family: 'Nano', variants: ['images/Nano/1.png','images/Nano/2.png','images/Nano/3.png'] },
+            { id: 'prod-031', name: 'NanoStation M5', category: 'accessory', specs: 'Nano station M5', price: 99000, oldPrice: 150000, image: 'images/NanoM5/1.png', badge: '-41%', family: 'NanoM5', variants: ['images/NanoM5/1.png','images/NanoM5/2.png','images/NanoM5/3.png'] },
+            { id: 'prod-032', name: 'Répéteur WiFi', category: 'accessory', specs: 'Répéteur WiFi', price: 19500, oldPrice: 25000, image: 'images/Repeteur/1.png', badge: '-41%', family: 'Repeteur', variants: ['images/Repeteur/1.png','images/Repeteur/2.png'] },
+            { id: 'prod-033', name: 'Routeur Wifi', category: 'accessory', specs: 'Routeur Wifi', price: 21500, oldPrice: 54000, image: 'images/Routeur/1.png', badge: '-41%', family: 'Routeur', variants: ['images/Routeur/1.png','images/Routeur/2.png','images/Routeur/3.png','images/Routeur/4.png'] },
+            { id: 'prod-034', name: 'Routeur 3G/4G Wireless N de TP-LINK Wifi', category: 'accessory', specs: 'Routeur 3G/4G Wireless N de TP-LINK Wifi', price: 29900, oldPrice: 55000, image: 'images/RouteurTP/1.png', badge: '-41%', family: 'RouteurTP', variants: ['images/RouteurTP/1.png','images/RouteurTP/2.png','images/RouteurTP/3.png','images/RouteurTP/4.png'] },
+            { id: 'prod-035', name: 'Clothes Storage Bag', category: 'accessory', specs: 'Clothes Storage Bag', price: 9900, oldPrice: 15000, image: 'images/Clothes/1.png', badge: '-41%', family: 'Clothes', variants: ['images/Clothes/1.png','images/Clothes/2.png'] },
+            { id: 'prod-036', name: 'Téléphone fixe GSM 1 Sim', category: 'accessory', specs: 'Téléphone fixe GSM 1 Sim', price: 9900, oldPrice: 15000, image: 'images/telephonefixe/1.png', badge: '-41%', family: 'telephonefixe', variants: ['images/telephonefixe/1.png','images/telephonefixe/2.png'] },
+            { id: 'prod-037', name: 'telephone PABX 14900 F.WEBP', category: 'accessory', specs: 'telephone PABX 14900 F.WEBP', price: 19900, oldPrice: 15000, image: 'images/telephonePABX/1.png', badge: '-41%', family: 'telephonePABX', variants: ['images/telephonePABX/1.png'] }
+        ];
+
+        // ========== ÉTAT DU PANIER ==========
+        let currentProducts = [...productsData];
+        let cartCount = 0;
+        let wishlistCount = 0;
+
+        // ========== FONCTIONS UTILITAIRES ==========
+        function formatPrice(p) { return p.toLocaleString() + ' Fcfa'; }
+
+        // ========== NOTIFICATION ==========
+        function showNotification(msg, type = 'success') {
+            const container = document.getElementById('notificationContainer');
+            const n = document.createElement('div');
+            n.className = `notification notification-${type}`;
+            n.innerHTML = `<i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i><span>${msg}</span><button onclick="this.parentElement.remove()"><i class="fas fa-times"></i></button>`;
+            container.appendChild(n);
+            setTimeout(() => n.classList.add('show'), 10);
+            setTimeout(() => {
+                n.classList.remove('show');
+                setTimeout(() => n.remove(), 300);
+            }, 3500);
+        }
+
+        // ========== GESTION DU PANIER ==========
+        function getCart() {
+            return JSON.parse(localStorage.getItem('cart') || '[]');
+        }
+
+        function saveCart(cart) {
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartBadge();
+        }
+
+        function updateCartBadge() {
+            const cart = getCart();
+            const total = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.querySelectorAll('.cart-badge').forEach(el => {
+                el.textContent = total;
+                el.style.display = total > 0 ? 'flex' : 'none';
+            });
+            cartCount = total;
+        }
+
+        function updateWishlistBadge() {
+            const wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
+            document.querySelectorAll('.wishlist-badge').forEach(el => {
+                el.textContent = wishlist.length;
+                el.style.display = wishlist.length > 0 ? 'flex' : 'none';
+            });
+            wishlistCount = wishlist.length;
+        }
+
+        // ========== AJOUTER AU PANIER ==========
+        function addToCart(id, name, price, image, category) {
+            let cart = getCart();
+            const existing = cart.find(item => item.id === id);
+            if (existing) {
+                existing.quantity++;
+            } else {
+                cart.push({
+                    id: id,
+                    name: name,
+                    price: price,
+                    image: image || 'assets/image/default-product.png',
+                    category: category || 'Produit',
+                    quantity: 1
+                });
+            }
+            saveCart(cart);
+            updateCartBadge();
+            showNotification(`${name} ajouté au panier`, 'success');
+        }
+
+        // ========== AJOUTER AUX FAVORIS ==========
+        function addToWishlist(id, name) {
+            let wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
+            if (!wishlist.includes(id)) {
+                wishlist.push(id);
+                localStorage.setItem('wishlist', JSON.stringify(wishlist));
+                updateWishlistBadge();
+                showNotification(`${name} ajouté aux favoris`, 'success');
+            } else {
+                showNotification(`${name} déjà dans vos favoris`, 'error');
+            }
+        }
+
+        // ========== COMMANDER VIA WHATSAPP ==========
+        function orderViaWhatsApp(productName, productPrice, message) {
+            const phone = "237657715482";
+            const msg = message || `Bonjour, je souhaite commander ${productName} au prix de ${formatPrice(productPrice)}. Merci !`;
+            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
+            showNotification('Commande envoyée sur WhatsApp', 'success');
+        }
+
+        // ========== LIGHTBOX ==========
+        function openLightbox(src) { 
+            const lb = document.getElementById('lightboxModal'); 
+            document.getElementById('lightboxImage').src = src; 
+            lb.classList.add('active'); 
+            document.body.style.overflow = 'hidden'; 
+        }
+        function closeLightbox() { 
+            document.getElementById('lightboxModal').classList.remove('active'); 
+            document.body.style.overflow = ''; 
+        }
+
+        // ========== VARIANT MODAL ==========
+        function showVariants(product) {
+            const modal = document.getElementById('variantModal');
+            document.getElementById('variantModalTitle').innerHTML = `<i class="fas fa-palette"></i> ${product.name} - Options`;
+            let variantsHtml = '';
+            
+            if (product.variants && product.variants.length > 0) {
+                product.variants.forEach(v => {
+                    variantsHtml += `
+                        <div class="variant-card">
+                            <img src="${v}" alt="${product.name}" onclick="event.stopPropagation(); openLightbox('${v}')">
+                            <h4>${product.name}</h4>
+                            <div class="price">${formatPrice(product.price)}</div>
+                            <div style="display:flex;gap:0.5rem;margin-top:0.5rem;flex-wrap:wrap;justify-content:center;">
+                                <button class="btn" style="font-size:0.75rem;padding:0.4rem 0.8rem;" onclick="event.stopPropagation(); addToCart('${product.id}', '${product.name}', ${product.price}, '${v}', '${product.category}')">
+                                    <i class="fas fa-shopping-cart"></i> Panier
+                                </button>
+                                <button class="btn btn-whatsapp" style="font-size:0.75rem;padding:0.4rem 0.8rem;" onclick="event.stopPropagation(); orderViaWhatsApp('${product.name}', ${product.price}, 'Bonjour, je souhaite commander ${product.name}. Merci !')">
+                                    <i class="fab fa-whatsapp"></i> Commander
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                });
+            } else {
+                variantsHtml = `
+                    <div class="variant-card" style="grid-column:1/-1;">
+                        <i class="fas fa-box" style="font-size:3rem; margin:1rem 0; color:var(--gold);"></i>
+                        <h4>${product.name}</h4>
+                        <div class="price">${formatPrice(product.price)}</div>
+                        <div style="display:flex;gap:0.5rem;margin-top:0.5rem;flex-wrap:wrap;justify-content:center;">
+                            <button class="btn" style="font-size:0.75rem;padding:0.4rem 0.8rem;" onclick="addToCart('${product.id}', '${product.name}', ${product.price}, '${product.image}', '${product.category}')">
+                                <i class="fas fa-shopping-cart"></i> Panier
+                            </button>
+                            <button class="btn btn-whatsapp" style="font-size:0.75rem;padding:0.4rem 0.8rem;" onclick="orderViaWhatsApp('${product.name}', ${product.price}, 'Bonjour, je souhaite commander ${product.name}. Merci !')">
+                                <i class="fab fa-whatsapp"></i> Commander
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            document.getElementById('variantGrid').innerHTML = variantsHtml;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeVariantModal() { 
+            document.getElementById('variantModal').classList.remove('active'); 
+            document.body.style.overflow = ''; 
+        }
+
+        // ========== RENDER PRODUCTS ==========
+        function renderProducts(list = null) {
+            const grid = document.getElementById('productsGrid');
+            if(!grid) return;
+            const toRender = list || currentProducts;
+            if(toRender.length === 0) { 
+                grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--gray-medium);"><i class="fas fa-search" style="font-size:2.5rem;display:block;margin-bottom:1rem;opacity:0.3;"></i><p>Aucun produit trouvé</p></div>'; 
+                return; 
+            }
+            grid.innerHTML = toRender.map(p => `
+                <div class="product-card">
+                    <div class="product-image" onclick="openLightbox('${p.image}')">
+                        <span class="product-badge">${p.badge}</span>
+                        <img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.src='https://placehold.co/400x400/1a1a1a/D4AF37?text=${encodeURIComponent(p.name)}'">
+                        <div class="product-actions-on-image">
+                            <button class="product-action-btn" onclick="event.stopPropagation(); addToWishlist('${p.id}', '${p.name}')" title="Ajouter aux favoris">
+                                <i class="far fa-heart"></i>
+                            </button>
+                            <button class="product-action-btn" onclick="event.stopPropagation(); addToCart('${p.id}', '${p.name}', ${p.price}, '${p.image}', '${p.category}')" title="Ajouter au panier">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
+                            <button class="product-action-btn whatsapp-order" onclick="event.stopPropagation(); orderViaWhatsApp('${p.name}', ${p.price}, 'Bonjour, je souhaite commander ${p.name}. Merci !')" title="Commander via WhatsApp">
+                                <i class="fab fa-whatsapp"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">${p.name}</h3>
+                        <div class="product-price">${formatPrice(p.price)}<span class="old-price">${formatPrice(p.oldPrice)}</span></div>
+                        <div class="product-specs">${p.specs}</div>
+                        <div class="product-actions">
+                            <button class="btn" onclick="orderViaWhatsApp('${p.name}', ${p.price}, 'Bonjour, je souhaite commander ${p.name}. Merci !')">
+                                <i class="fab fa-whatsapp"></i> Commander
+                            </button>
+                            <button class="btn btn-outline" onclick="showVariants(${JSON.stringify(p).replace(/"/g, '&quot;')})">
+                                <i class="fas fa-palette"></i> Options
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // ========== FILTER ET RECHERCHE ==========
+        function filterProducts(cat) {
+            const title = document.getElementById('sectionTitle');
+            const clearBtn = document.getElementById('clearSearchBtn');
+            if(cat === 'all') { 
+                currentProducts = [...productsData]; 
+                title.innerHTML = 'Nos Produits'; 
+            } else { 
+                currentProducts = productsData.filter(p => p.category === cat); 
+                title.innerHTML = 'Accessoires High-Tech'; 
+            }
+            renderProducts();
+            if(clearBtn) clearBtn.style.display = 'none';
+            document.getElementById('desktopSearchInput').value = '';
+            document.getElementById('mobileSearchInput').value = '';
+        }
+
+        function searchProducts(q) {
+            const title = document.getElementById('sectionTitle');
+            const clearBtn = document.getElementById('clearSearchBtn');
+            if(!q.trim()) { 
+                currentProducts = [...productsData]; 
+                title.innerHTML = 'Nos Produits'; 
+                if(clearBtn) clearBtn.style.display = 'none'; 
+                renderProducts(); 
+                return; 
+            }
+            const filtered = productsData.filter(p => 
+                p.name.toLowerCase().includes(q.toLowerCase()) || 
+                p.specs.toLowerCase().includes(q.toLowerCase())
+            );
+            currentProducts = filtered;
+            renderProducts();
+            title.innerHTML = filtered.length > 0 ? `Résultats (${filtered.length})` : 'Aucun résultat';
+            if(clearBtn) clearBtn.style.display = filtered.length !== productsData.length ? 'inline-block' : 'none';
+            showNotification(`${filtered.length} produit(s) trouvé(s)`, filtered.length > 0 ? 'success' : 'error');
+        }
+
+        // ========== MENUS ==========
+        const openServices = document.getElementById('openServicesSidebar');
+        const servicesSidebar = document.getElementById('servicesSidebar');
+        const overlay = document.getElementById('servicesSidebarOverlay');
+        const closeServices = document.getElementById('closeServicesSidebar');
+        function openServicesMenu() { servicesSidebar.classList.add('active'); overlay.classList.add('active'); document.body.style.overflow = 'hidden'; }
+        function closeServicesMenu() { servicesSidebar.classList.remove('active'); overlay.classList.remove('active'); document.body.style.overflow = ''; }
+        if(openServices) openServices.addEventListener('click', openServicesMenu);
+        if(closeServices) closeServices.addEventListener('click', closeServicesMenu);
+        if(overlay) overlay.addEventListener('click', closeServicesMenu);
+
+        // ========== MOBILE SIDEBAR ==========
+        const hamburger = document.getElementById('hamburgerBtn');
+        const mobileSidebar = document.getElementById('mobileSidebar');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const sidebarClose = document.getElementById('sidebarCloseBtn');
+        function openSidebar() { mobileSidebar.classList.add('active'); menuOverlay.classList.add('active'); hamburger.classList.add('active'); document.body.style.overflow = 'hidden'; }
+        function closeSidebar() { mobileSidebar.classList.remove('active'); menuOverlay.classList.remove('active'); hamburger.classList.remove('active'); document.body.style.overflow = ''; }
+        if(hamburger) hamburger.addEventListener('click', () => mobileSidebar.classList.contains('active') ? closeSidebar() : openSidebar());
+        if(sidebarClose) sidebarClose.addEventListener('click', closeSidebar);
+        if(menuOverlay) menuOverlay.addEventListener('click', closeSidebar);
+
+        // ========== AUTH MODAL ==========
+        const modal = document.getElementById('authModal');
+        const modalTriggers = document.querySelectorAll('[data-modal="auth"]');
+        const modalClose = document.querySelector('[data-modal-close]');
+        function openModal() { modal.classList.add('active'); document.body.style.overflow = 'hidden'; }
+        function closeModal() { modal.classList.remove('active'); document.body.style.overflow = ''; }
+        modalTriggers.forEach(t => t.addEventListener('click', openModal));
+        if(modalClose) modalClose.addEventListener('click', closeModal);
+        if(modal) modal.addEventListener('click', e => { if(e.target === modal) closeModal(); });
+        
+        document.querySelectorAll('.auth-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                const target = tab.dataset.tab;
+                document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById(`${target}Form`)?.classList.add('active');
+            });
+        });
+
+        // ========== FORMULAIRES ==========
+        document.getElementById('adminForm')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('adminEmail').value;
+            const pwd = document.getElementById('adminPassword').value;
+            if(loginAdmin(email, pwd)) { 
+                showNotification('Connexion admin réussie', 'success'); 
+                updateAdminUI(); 
+                closeModal(); 
+            } else {
+                showNotification('Identifiants incorrects', 'error');
+            }
+        });
+
+        document.getElementById('adminDashboardBtn')?.addEventListener('click', () => window.location.href = 'dashboard.html');
+        document.getElementById('adminLogoutBtn')?.addEventListener('click', () => { 
+            if(confirm('Déconnexion ?')) { 
+                logoutAdmin(); 
+                showNotification('Déconnecté', 'success'); 
+            } 
+        });
+
+        document.getElementById('newsletterForm')?.addEventListener('submit', e => { 
+            e.preventDefault(); 
+            showNotification('Merci pour votre inscription !', 'success'); 
+            e.target.reset(); 
+        });
+
+        document.getElementById('loginForm')?.addEventListener('submit', e => { 
+            e.preventDefault(); 
+            showNotification('Connexion réussie !', 'success'); 
+            setTimeout(closeModal, 1500); 
+        });
+
+        document.getElementById('registerForm')?.addEventListener('submit', e => { 
+            e.preventDefault(); 
+            const pwdInputs = e.target.querySelectorAll('input[type="password"]');
+            if(pwdInputs.length === 2 && pwdInputs[0].value !== pwdInputs[1].value) {
+                showNotification('Les mots de passe ne correspondent pas', 'error');
+                return;
+            }
+            showNotification('Compte créé !', 'success'); 
+            document.querySelector('[data-tab="login"]').click(); 
+        });
+
+        // ========== RECHERCHE ==========
+        document.getElementById('desktopSearchForm')?.addEventListener('submit', e => { 
+            e.preventDefault(); 
+            searchProducts(document.getElementById('desktopSearchInput').value.trim()); 
+        });
+
+        document.getElementById('mobileSearchForm')?.addEventListener('submit', e => { 
+            e.preventDefault(); 
+            const q = document.getElementById('mobileSearchInput').value.trim(); 
+            if(q) { 
+                searchProducts(q); 
+                closeSidebar(); 
+            } 
+        });
+
+        document.getElementById('clearSearchBtn')?.addEventListener('click', () => { 
+            searchProducts(''); 
+            document.getElementById('desktopSearchInput').value = ''; 
+            document.getElementById('mobileSearchInput').value = ''; 
+        });
+
+        // ========== LIGHTBOX EVENTS ==========
+        document.getElementById('lightboxClose')?.addEventListener('click', closeLightbox);
+        document.getElementById('lightboxModal')?.addEventListener('click', e => { if(e.target === e.currentTarget) closeLightbox(); });
+        document.getElementById('variantModalClose')?.addEventListener('click', closeVariantModal);
+        document.getElementById('variantModal')?.addEventListener('click', e => { if(e.target === e.currentTarget) closeVariantModal(); });
+
+        // ========== BACK TO TOP ==========
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => { 
+            if(backToTop) backToTop.classList.toggle('visible', window.scrollY > 300); 
+        });
+        if(backToTop) backToTop.addEventListener('click', e => { 
+            e.preventDefault(); 
+            window.scrollTo({ top: 0, behavior: 'smooth' }); 
+        });
+
+        // ========== EXPOSER LES FONCTIONS GLOBALEMENT ==========
+        window.filterProducts = filterProducts;
+        window.orderViaWhatsApp = orderViaWhatsApp;
+        window.showVariants = showVariants;
+        window.openLightbox = openLightbox;
+        window.closeLightbox = closeLightbox;
+        window.closeVariantModal = closeVariantModal;
+        window.searchProducts = searchProducts;
+        window.addToCart = addToCart;
+        window.addToWishlist = addToWishlist;
+
+        // ========== INIT ==========
+        renderProducts();
+        updateAdminUI();
+        updateCartBadge();
+        updateWishlistBadge();
+
+        console.log('✅ Paname Store - Bibliothèques corrigées');
+        console.log('🛒 Panier et favoris fonctionnels avec localStorage');
+        console.log('🔐 Admin: admin@lepaname.com / Admin123!');
+    </script>
+</body>
+</html>
